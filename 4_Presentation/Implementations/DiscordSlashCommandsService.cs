@@ -1,0 +1,57 @@
+﻿using Discord;
+using Microsoft.Extensions.Logging;
+using MlkAdmin._1_Domain.Enums;
+using MlkAdmin._3_Infrastructure.Interfaces;
+using MlkAdmin.Shared.Results;
+using MlkAdmin._4_Presentation.Interfaces;
+using MlkAdmin.Shared.Constants;
+using MlkAdmin.Shared.JsonProviders;
+
+namespace MlkAdmin._4_Presentation.Discord;
+public class DiscordSlashCommandsService(
+    ILogger<DiscordSlashCommandsService> logger,
+    IDiscordService discordService,
+    IJsonProvidersHub providersHub) : IDiscordSlashCommandsService
+{
+    private List<SlashCommandProperties?> SlashGuildCommands { get; set; } = [];
+
+    public async Task RegistrateCommandsAsync()
+    {
+        try
+        {
+            await discordService.DiscordClient.Rest.BulkOverwriteGuildCommands([], providersHub.GuildConfigProvidersHub.GuildConfig.GuildDetails.DiscordId);
+
+            SlashGuildCommands.Add(AddLobbyNameCommand());
+            SlashGuildCommands.Add(AddTestCommand());
+
+            foreach (SlashCommandProperties? command in SlashGuildCommands)
+                await discordService.DiscordClient.Rest.CreateGuildCommand(command, providersHub.GuildConfigProvidersHub.GuildConfig.GuildDetails.DiscordId);
+
+        }
+        catch (Exception exception)
+        {
+            logger.LogError(
+                exception,
+                "Ошибка при попытке добавить команды бота\nСообщение: {ErrorMessage}",
+                exception.Message);
+        }
+    }
+
+    private static SlashCommandProperties AddLobbyNameCommand()
+    {
+        return new SlashCommandBuilder()
+            .WithName(MlkAdminConstants.SET_VOICEROOM_COMMAND_NAME)
+            .WithDescription("Настраивает имя для создаваемой вами личной комнаты.")
+            .AddOption("name", ApplicationCommandOptionType.String, "Имя комнаты", isRequired: true)
+            .Build();
+    }
+
+    private static SlashCommandProperties? AddTestCommand()
+    {
+        return new SlashCommandBuilder()
+            .WithName(MlkAdminConstants.TESTING_COMMAND_NAME)
+            .WithDescription("команда для тестов")
+            .AddOption("prompt", ApplicationCommandOptionType.String, "Запрос к ChatGPT", isRequired: true)
+            .Build();
+    }
+}
