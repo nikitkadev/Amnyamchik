@@ -118,7 +118,8 @@ public static class GuildBotDIRegistrator
             typeof(MessageReceivedHandler).Assembly,
             typeof(ReactionAddedHandler).Assembly,
             typeof(GuildMemberUpdated).Assembly,
-            typeof(SlashCommandExecutedHandler).Assembly));
+            typeof(SlashCommandExecutedHandler).Assembly,
+            typeof(SlashCommandCountHandler).Assembly));
 
         services.AddHostedService<GuildBotHostedService>();
         services.AddSingleton<IDiscordEventsService, DiscordEventsService>();

@@ -201,23 +201,23 @@ public class MlkAdminDbContext(DbContextOptions<MlkAdminDbContext> options) : Db
             .IsRequired(true);
 
         builder.Entity<GuildMemberMetric>()
-            .Property(prop => prop.CommandSentCount)
-            .HasColumnName("command_sent_count")
+            .Property(prop => prop.CommandsSentCount)
+            .HasColumnName("commands_sent_count")
             .IsRequired(true);
 
         builder.Entity<GuildMemberMetric>()
-            .Property(prop => prop.EmotesSentCount)
-            .HasColumnName("emotes_sent_count")
-            .IsRequired(true);
-
-        builder.Entity<GuildMemberMetric>()
-            .Property(prop => prop.VoiceChannelsTimeSpent)
-            .HasColumnName("vchannels_time_spent")
+            .Property(prop => prop.StickersSentCount)
+            .HasColumnName("stickers_sent_count")
             .IsRequired(true);
 
         builder.Entity<GuildMemberMetric>()
             .Property(prop => prop.GifsSentCount)
             .HasColumnName("gifs_sent_count")
+            .IsRequired(true);
+
+        builder.Entity<GuildMemberMetric>()
+            .Property(prop => prop.PngPicturesSentCount)
+            .HasColumnName("pngpictures_sent_count")
             .IsRequired(true);
 
         builder.Entity<GuildMemberMetric>()

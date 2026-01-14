@@ -37,19 +37,24 @@ public class GuildMemberMetricRepository(
     }
     public async Task IncrementCommandSentCountAsync(ulong guildMemberDiscordId, int increment = 1)
     {
-        await ChangeDbPropertyAsync(guildMemberDiscordId, member => member.CommandSentCount += increment);
+        await ChangeDbPropertyAsync(guildMemberDiscordId, member => member.CommandsSentCount += increment);
     }
-    public async Task IncrementEmoteSentCountAsync(ulong guildMemberDiscordId, int increment = 1)
+    public async Task IncrementStickerCountAsync(ulong guildMemberDiscordId, int increment = 1)
     {
-        await ChangeDbPropertyAsync(guildMemberDiscordId, member => member.EmotesSentCount += increment);
+        await ChangeDbPropertyAsync(guildMemberDiscordId, member => member.StickersSentCount += increment);
     }
     public async Task IncrementGifSentCountAsync(ulong guildMemberDiscordId, int increment = 1)
     {
         await ChangeDbPropertyAsync(guildMemberDiscordId, member => member.GifsSentCount += increment);
+    }
+    public async Task IncrementPngPictureSentCountAsync(ulong guildMemberDiscordId, int increment = 1)
+    {
+        await ChangeDbPropertyAsync(guildMemberDiscordId, member => member.PngPicturesSentCount += increment);
     }
 
     public async Task UpdateLastMessageDateAsync(ulong guildMemberDiscordId)
     {
         await ChangeDbPropertyAsync(guildMemberDiscordId, member => member.LastMessage = DateTimeOffset.UtcNow);
     }
+
 }
