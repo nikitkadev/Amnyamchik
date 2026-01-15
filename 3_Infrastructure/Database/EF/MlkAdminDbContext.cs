@@ -170,14 +170,19 @@ public class MlkAdminDbContext(DbContextOptions<MlkAdminDbContext> options) : Db
             .IsRequired(true);
 
         builder.Entity<GuildVoiceSession>()
-            .Property(prop => prop.Name)
+            .Property(prop => prop.VChannelName)
             .HasColumnName("name")
             .IsRequired(true);
 
         builder.Entity<GuildVoiceSession>()
             .Property(prop => prop.StartingAt)
             .HasColumnName("starting_at")
-            .IsRequired(true);
+            .IsRequired(false);
+
+        builder.Entity<GuildVoiceSession>()
+            .Property(prop => prop.EndingAt)
+            .HasColumnName("ending_at")
+            .IsRequired(false);
 
         builder.Entity<GuildVoiceSession>()
             .Property(prop => prop.TotalSeconds)

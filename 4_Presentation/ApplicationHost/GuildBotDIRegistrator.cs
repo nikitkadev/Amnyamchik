@@ -1,6 +1,6 @@
 ﻿using Discord;
-using OpenAI.Chat;
 using Discord.WebSocket;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using MlkAdmin._1_Domain.Interfaces;
 using MlkAdmin._2_Application.Events.ButtonExecuted;
@@ -23,26 +23,27 @@ using MlkAdmin._2_Application.Interfaces.Services;
 using MlkAdmin._2_Application.Managers.Channels.VoiceChannels;
 using MlkAdmin._2_Application.Managers.Messages;
 using MlkAdmin._2_Application.Managers.Users;
+using MlkAdmin._3_Infrastructure.Cache;
 using MlkAdmin._3_Infrastructure.DataBase.EF;
 using MlkAdmin._3_Infrastructure.Implementations.Builders;
 using MlkAdmin._3_Infrastructure.Implementations.Services;
 using MlkAdmin._3_Infrastructure.Interfaces;
+using MlkAdmin._3_Infrastructure.Providers.Implementations.Configuration.App;
+using MlkAdmin._3_Infrastructure.Providers.Implementations.Configuration.Guild;
+using MlkAdmin._3_Infrastructure.Providers.Implementations.Configuration.Messages;
+using MlkAdmin._3_Infrastructure.Providers.Implementations.Hubs;
+using MlkAdmin._3_Infrastructure.Providers.Implementations.Hubs.Messages;
+using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.App;
+using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.Guild;
+using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.Messages;
+using MlkAdmin._3_Infrastructure.Providers.Interfaces.Hubs;
 using MlkAdmin._3_Infrastructure.Services;
 using MlkAdmin._4_Presentation.Discord;
 using MlkAdmin._4_Presentation.Interfaces;
 using MlkAdmin.Presentation.DiscordListeners;
 using MlkAdmin.Presentation.PresentationServices;
-using Microsoft.EntityFrameworkCore;
 using MlkAdmin.Shared.JsonProviders;
-using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.App;
-using MlkAdmin._3_Infrastructure.Providers.Implementations.Configuration.App;
-using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.Guild;
-using MlkAdmin._3_Infrastructure.Providers.Implementations.Configuration.Guild;
-using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.Messages;
-using MlkAdmin._3_Infrastructure.Providers.Implementations.Configuration.Messages;
-using MlkAdmin._3_Infrastructure.Providers.Interfaces.Hubs;
-using MlkAdmin._3_Infrastructure.Providers.Implementations.Hubs;
-using MlkAdmin._3_Infrastructure.Providers.Implementations.Hubs.Messages;
+using OpenAI.Chat;
 
 namespace MlkAdmin.Presentation.DI;
 
@@ -50,30 +51,32 @@ public static class GuildBotDIRegistrator
 {
     public static IServiceCollection AddDomainServices(this IServiceCollection services)
     {
-        services.AddScoped<IGuildChannelsRepository, GuildChannelsRepository>();
-        services.AddScoped<IGuildMembersRepository, GuildMembersRepository>();
-        services.AddScoped<IGuildMessagesRepository, GuildMessagesRepository>();
-        services.AddScoped<IGuildVoiceSessionRepository, GuildVoiceSessionRepository>();
+        services.AddSingleton<IGuildChannelsRepository, GuildChannelsRepository>();
+        services.AddSingleton<IGuildMembersRepository, GuildMembersRepository>();
+        services.AddSingleton<IGuildMessagesRepository, GuildMessagesRepository>();
+        services.AddSingleton<IGuildVoiceSessionRepository, GuildVoiceSessionRepository>();
 
         return services;
     }
     public static IServiceCollection AddApplicationServices(this IServiceCollection services)
     {
-        services.AddScoped<IDiscordEmbedBuilder, DiscordEmbedBuilder>();
-        services.AddScoped<IDiscordMessageComponentsBuilder, DiscordMessageComponentsBuilder>();
-        services.AddScoped<IGuildMessagesManager, GuildMessagesManager>();
-        services.AddScoped<IGuildMembersManager, GuildMembersManager>();
-        services.AddScoped<IGuildChannelsService, GuildChannelsService>();
-        services.AddScoped<IGuildInitializationService, GuildInitializationService>();
-        services.AddScoped<IGuildMessagesService, GuildMessagesService>();
-        services.AddScoped<IGuildRolesService, GuildRolesService>();
+        services.AddSingleton<IDiscordEmbedBuilder, DiscordEmbedBuilder>();
+        services.AddSingleton<IDiscordMessageComponentsBuilder, DiscordMessageComponentsBuilder>();
+        services.AddSingleton<IGuildMessagesManager, GuildMessagesManager>();
+        services.AddSingleton<IGuildMembersManager, GuildMembersManager >();
+        services.AddSingleton<IGuildChannelsService, GuildChannelsService>();
+        services.AddSingleton<IGuildInitializationService, GuildInitializationService>();
+        services.AddSingleton<IGuildMessagesService, GuildMessagesService>();
+        services.AddSingleton<IGuildRolesService, GuildRolesService>();
+        services.AddSingleton<IGuildVoiceSessionCacheService, GuildVoiceSessionCacheService>();
+        services.AddSingleton<IGuildVoiceSessionsManager, GuildVoiceSessionsManager>();
 
         return services;
     }
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
     {
-        services.AddScoped<IDiscordService, DiscordService>();
-        services.AddScoped<IChatGPTService, ChatGPTService>();
+        services.AddSingleton<IDiscordService, DiscordService>();
+        services.AddSingleton<IChatGPTService, ChatGPTService>();
 
         services.AddSingleton<IJsonProvidersHub, JsonProvidersHub>();
 
@@ -105,21 +108,25 @@ public static class GuildBotDIRegistrator
     }
     public static IServiceCollection AddPresentationServices(this IServiceCollection services)
     {
-        services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(
-            typeof(GuildBotStartup).Assembly,
-            typeof(UserJoinedHandler).Assembly,
-            typeof(UserLeftHandler).Assembly,
-            typeof(ModalSubmittedHandler).Assembly,
-            typeof(ButtonExecutedHandler).Assembly,
-            typeof(GuildAvailableHandler).Assembly,
-            typeof(UserVoiceStateUpdatedHandler).Assembly,
-            typeof(SelectMenuExecutedHandler).Assembly,
-            typeof(ReadyHandler).Assembly,
-            typeof(MessageReceivedHandler).Assembly,
-            typeof(ReactionAddedHandler).Assembly,
-            typeof(GuildMemberUpdated).Assembly,
-            typeof(SlashCommandExecutedHandler).Assembly,
-            typeof(SlashCommandCountHandler).Assembly));
+        services.AddMediatR(
+            cfg => cfg.RegisterServicesFromAssemblies(
+                typeof(GuildBotStartup).Assembly,
+                typeof(UserJoinedHandler).Assembly,
+                typeof(UserLeftHandler).Assembly,
+                typeof(ModalSubmittedHandler).Assembly,
+                typeof(ButtonExecutedHandler).Assembly,
+                typeof(GuildAvailableHandler).Assembly,
+                typeof(UserVoiceStateUpdatedHandler).Assembly,
+                typeof(SelectMenuExecutedHandler).Assembly,
+                typeof(ReadyHandler).Assembly,
+                typeof(MessageReceivedHandler).Assembly,
+                typeof(ReactionAddedHandler).Assembly,
+                typeof(GuildMemberUpdated).Assembly,
+                typeof(SlashCommandExecutedHandler).Assembly,
+                typeof(SlashCommandCountHandler).Assembly,
+                typeof(VoiceSessionTimeHandler).Assembly
+            )
+        );
 
         services.AddHostedService<GuildBotHostedService>();
         services.AddSingleton<IDiscordEventsService, DiscordEventsService>();
@@ -134,13 +141,14 @@ public static class GuildBotDIRegistrator
                 )
             );
 
-        services.AddSingleton<ChatClient>(service =>
-        {
-            var apiKey = service.GetRequiredService<IJsonMlkAdminAppConfigurationProvider>().OpenAIApiKey;
-            var model = "gpt-5-mini";
+        services.AddSingleton<ChatClient>(
+            service =>
+            {
+                var apiKey = service.GetRequiredService<IJsonMlkAdminAppConfigurationProvider>().OpenAIApiKey;
+                var model = "gpt-5-mini";
 
-            return new ChatClient(model, apiKey);
-        });
+                return new ChatClient(model, apiKey);
+            });
 
         return services;
     }
