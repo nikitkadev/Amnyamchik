@@ -26,6 +26,7 @@ using MlkAdmin._2_Application.Managers.Users;
 using MlkAdmin._3_Infrastructure.Cache;
 using MlkAdmin._3_Infrastructure.DataBase.EF;
 using MlkAdmin._3_Infrastructure.Implementations.Builders;
+using MlkAdmin._3_Infrastructure.Implementations.Repositiory;
 using MlkAdmin._3_Infrastructure.Implementations.Services;
 using MlkAdmin._3_Infrastructure.Interfaces;
 using MlkAdmin._3_Infrastructure.Providers.Implementations.Configuration.App;
@@ -51,10 +52,11 @@ public static class GuildBotDIRegistrator
 {
     public static IServiceCollection AddDomainServices(this IServiceCollection services)
     {
-        services.AddSingleton<IGuildChannelsRepository, GuildChannelsRepository>();
-        services.AddSingleton<IGuildMembersRepository, GuildMembersRepository>();
-        services.AddSingleton<IGuildMessagesRepository, GuildMessagesRepository>();
-        services.AddSingleton<IGuildVoiceSessionRepository, GuildVoiceSessionRepository>();
+        services.AddScoped<IGuildMemberMetricRepository, GuildMemberMetricRepository>();
+        services.AddScoped<IGuildChannelsRepository, GuildChannelsRepository>();
+        services.AddScoped<IGuildMembersRepository, GuildMembersRepository>();
+        services.AddScoped<IGuildMessagesRepository, GuildMessagesRepository>();
+        services.AddScoped<IGuildVoiceSessionRepository, GuildVoiceSessionRepository>();
 
         return services;
     }
@@ -62,14 +64,14 @@ public static class GuildBotDIRegistrator
     {
         services.AddSingleton<IDiscordEmbedBuilder, DiscordEmbedBuilder>();
         services.AddSingleton<IDiscordMessageComponentsBuilder, DiscordMessageComponentsBuilder>();
-        services.AddSingleton<IGuildMessagesManager, GuildMessagesManager>();
-        services.AddSingleton<IGuildMembersManager, GuildMembersManager >();
-        services.AddSingleton<IGuildChannelsService, GuildChannelsService>();
-        services.AddSingleton<IGuildInitializationService, GuildInitializationService>();
-        services.AddSingleton<IGuildMessagesService, GuildMessagesService>();
+        services.AddScoped<IGuildMessagesManager, GuildMessagesManager>();
+        services.AddScoped<IGuildMembersManager, GuildMembersManager >();
+        services.AddScoped<IGuildChannelsService, GuildChannelsService>();
+        services.AddScoped<IGuildInitializationService, GuildInitializationService>();
+        services.AddScoped<IGuildMessagesService, GuildMessagesService>();
         services.AddSingleton<IGuildRolesService, GuildRolesService>();
         services.AddSingleton<IGuildVoiceSessionCacheService, GuildVoiceSessionCacheService>();
-        services.AddSingleton<IGuildVoiceSessionsManager, GuildVoiceSessionsManager>();
+        services.AddScoped<IGuildVoiceSessionsManager, GuildVoiceSessionsManager>();
 
         return services;
     }

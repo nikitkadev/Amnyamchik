@@ -1,13 +1,13 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._3_Infrastructure.Implementations.Repositiory;
+using MlkAdmin._1_Domain.Interfaces;
 
 namespace MlkAdmin._2_Application.Events.SlashCommandExecuted;
 
 public class SlashCommandCountHandler(
     ILogger<SlashCommandCountHandler> logger,
-    GuildMemberMetricRepository metricRepository) : INotificationHandler<SlashCommandExecuted>
+    IGuildMemberMetricRepository metricRepository) : INotificationHandler<SlashCommandExecuted>
 {
     public async Task Handle(SlashCommandExecuted notification, CancellationToken cancellationToken)
     {

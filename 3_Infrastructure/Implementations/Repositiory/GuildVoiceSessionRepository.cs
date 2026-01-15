@@ -1,12 +1,15 @@
 ﻿using MlkAdmin._1_Domain.Entities;
 using MlkAdmin._1_Domain.Interfaces;
+using MlkAdmin._3_Infrastructure.DataBase.EF;
 
 namespace MlkAdmin._3_Infrastructure.Implementations.Services;
 
-public class GuildVoiceSessionRepository : IGuildVoiceSessionRepository
+public class GuildVoiceSessionRepository(
+    MlkAdminDbContext dbContext) : IGuildVoiceSessionRepository
 {
-    public Task AddGuildVoiceSessionAsync(GuildVoiceSession session)
+    public async Task AddGuildVoiceSessionAsync(GuildVoiceSession session)
     {
-        throw new NotImplementedException();
+        await dbContext.GuildVoiceSessions.AddAsync(session);
+        await dbContext.SaveChangesAsync(); 
     }
 }
