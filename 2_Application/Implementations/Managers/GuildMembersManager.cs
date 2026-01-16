@@ -19,6 +19,7 @@ public class GuildMembersManager(
     IGuildRolesService roleService,
     IGuildMessagesManager messagesManager,
     IGuildMembersRepository membersRepository,
+    IGuildMemberMetricRepository metricRepository,
     IAnalysisService analysisService) : IGuildMembersManager
 {
     public async Task<BaseResult<GuildMemberAnalysisResultData>> AnalyzeGuildMemberAsync(ulong guildMemberDiscordId)
@@ -31,7 +32,7 @@ public class GuildMembersManager(
                 "Сущность участника успешно получена из базы данных для участника с DiscordId {GuildMemberDiscordId}",
                 guildMemberDiscordId);
 
-            var metrics = await analysisService.GetGuildMemberMetricsAsync(guildMemberDiscordId);
+            var metrics = await metricRepository.GetGuildMemberMetricAsync(guildMemberDiscordId);
 
             logger.LogInformation(
                 "Метрика успешно получена из базы данных для участника с DiscordId {GuildMemberDiscordId}",
@@ -80,7 +81,6 @@ public class GuildMembersManager(
                 
         }
     }
-
     public async Task<BaseResult> AuthorizeGuildMemberAsync(ulong guildMemberDiscordId, string guildMemberMention)
     {
         try
@@ -178,7 +178,6 @@ public class GuildMembersManager(
             );
         }
     }
-
     public async Task<BaseResult> DeauthorizeGuildMemberAsync(ulong guildMemberDiscordId, string guildMemberName)
     {
         try
@@ -230,7 +229,6 @@ public class GuildMembersManager(
                     ex.Message));
         }
     }
-
     public async Task<BaseResult> UpdateGuildMemberColorRoleAsync(ulong guildMemberDiscordId, string guildColorRoleKey)
     {
         try
@@ -275,7 +273,6 @@ public class GuildMembersManager(
                     ex.Message));
         }
     }
-
     public async Task<BaseResult> WelcomeNewMemberAsync(GuildMember guildMember)
     {
         try

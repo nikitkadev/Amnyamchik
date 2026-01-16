@@ -1,4 +1,5 @@
-﻿using MlkAdmin._1_Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using MlkAdmin._1_Domain.Entities;
 using MlkAdmin._1_Domain.Interfaces;
 using MlkAdmin._3_Infrastructure.DataBase.EF;
 
@@ -55,4 +56,16 @@ public class GuildMemberMetricRepository(
         await ChangeDbPropertyAsync(guildMemberDiscordId, member => member.LastMessage = DateTimeOffset.UtcNow);
     }
 
+    public async Task<GuildMemberMetric> GetGuildMemberMetricAsync(ulong guildMemberDiscordId)
+    {
+        var memberMetric = await dbContext.GuildMemberMetrics.FirstOrDefaultAsync(metric => metric.MemberDiscordId == guildMemberDiscordId);
+
+        if(memberMetric is null)
+            return new GuildMemberMetric()
+            {
+                MemberDiscordId = guildMemberDiscordId
+            };
+
+        return memberMetric;
+    }
 }

@@ -12,7 +12,7 @@ public class ChatGPTService(
     ILogger<ChatGPTService> logger,
     ChatClient chatClient) : IChatGPTService
 {
-    public async Task<GuildMemberAIAnalysisResultDto> AnalyzeWithAIGuildMemberAsync(IReadOnlyCollection<string> guildMemberMessages)
+    public async Task<GuildMemberAIAnalysisResultDto> AnalyzeWithAIGuildMemberAsync(IReadOnlyCollection<string?> guildMemberMessages)
     {
         try
         {
