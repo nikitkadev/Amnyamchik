@@ -7,7 +7,8 @@ public enum ErrorCodes
     NOT_FOUND = 2,
     VARIABLE_IS_NULL = 3,
     ROLE_ASSIGNMENT_FAILED = 4,
-    ROLE_REMOVAL_FAILED = 5
+    ROLE_REMOVAL_FAILED = 5,
+    DB_ERROR = 6,
 }
 
 public enum RoleType

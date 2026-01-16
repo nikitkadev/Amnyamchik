@@ -9,6 +9,6 @@ public interface IGuildMembersManager
     Task<BaseResult> AuthorizeGuildMemberAsync(ulong guildMemberDiscordId, string guildMemberMention);
     Task<BaseResult> DeauthorizeGuildMemberAsync(ulong guildMemberDiscordId, string guildMemberGlobalName);
     Task<BaseResult> UpdateGuildMemberColorRoleAsync(ulong guildMemberDiscordId, string guildRoleKey);
-    Task<BaseResult<GuildMemberAnalyzeData>> AnalyzeGuildMemberAsync(ulong guildMemberDiscordId);
+    Task<BaseResult<GuildMemberAnalysisResultData>> AnalyzeGuildMemberAsync(ulong guildMemberDiscordId);
     Task<BaseResult> WelcomeNewMemberAsync(GuildMember guildMemberEntity);
 }

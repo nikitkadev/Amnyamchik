@@ -68,14 +68,14 @@ public class SlashCommandExecutedHandler(
 
                 try
                 {
-                    var analyzeResult = await mediator.Send(
+                    var analysisResult = await mediator.Send(
                         new AnalyzeGuildMemberCommand()
                         {
                             GuildMemberDiscordId = command.User.Id
                         }, 
                         token);
 
-                    await messagesManager.SendAnalyzeResultMessageAsync(command, analyzeResult.Value);
+                    await messagesManager.SendAnalyzeResultMessageAsync(command, analysisResult.Value);
 
                     break;
                 }

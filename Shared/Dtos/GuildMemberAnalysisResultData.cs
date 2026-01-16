@@ -1,12 +1,12 @@
 ﻿namespace MlkAdmin.Shared.Dtos;
 
-public record GuildMemberAnalyzeData
+public record GuildMemberAnalysisResultData
 {
     public ulong GuildMemberDiscordId { get; set; }
 
-    public DateTime JoinedAt { get; init; }
-    public DateTime FirstMessageDate { get; init; }
-    public DateTime LastMessageDate { get; init; }
+    public DateTimeOffset? JoinedAt { get; init; }
+    public DateTimeOffset? FirstMessageDate { get; init; }
+    public DateTimeOffset? LastMessageDate { get; init; }
     public int DaysSinceJoined { get; init; }
 
     public int MessageCount { get; init; }

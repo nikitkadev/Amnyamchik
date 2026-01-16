@@ -338,7 +338,7 @@ public class GuildMessagesManager(
         await guildTextChannel.SendMessageAsync(
             components: messageComponent);
     }
-    public async Task SendAnalyzeResultMessageAsync(SocketSlashCommand messageAction, GuildMemberAnalyzeData data)
+    public async Task SendAnalyzeResultMessageAsync(SocketSlashCommand messageAction, GuildMemberAnalysisResultData data)
     {
         if (data is null)
             return;

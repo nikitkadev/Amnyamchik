@@ -18,8 +18,69 @@ public class GuildMembersManager(
     IJsonProvidersHub providersHub,
     IGuildRolesService roleService,
     IGuildMessagesManager messagesManager,
-    IGuildMembersRepository membersRepository) : IGuildMembersManager
+    IGuildMembersRepository membersRepository,
+    IAnalysisService analysisService) : IGuildMembersManager
 {
+    public async Task<BaseResult<GuildMemberAnalysisResultData>> AnalyzeGuildMemberAsync(ulong guildMemberDiscordId)
+    {
+        try
+        {
+            var dbMember = await membersRepository.GetGuildMemberEntityAsync(guildMemberDiscordId);
+
+            logger.LogInformation(
+                "Сущность участника успешно получена из базы данных для участника с DiscordId {GuildMemberDiscordId}",
+                guildMemberDiscordId);
+
+            var metrics = await analysisService.GetGuildMemberMetricsAsync(guildMemberDiscordId);
+
+            logger.LogInformation(
+                "Метрика успешно получена из базы данных для участника с DiscordId {GuildMemberDiscordId}",
+                guildMemberDiscordId);
+
+            var aiAnalysis = await analysisService.GetGuildMemberAIAnalysisAsync(guildMemberDiscordId);
+
+            logger.LogInformation(
+                "AI-анализ успешно получен для участника с DiscordId {GuildMemberDiscordId}",
+                guildMemberDiscordId);
+
+            return BaseResult<GuildMemberAnalysisResultData>.Success(
+                new GuildMemberAnalysisResultData()
+                {
+                    GuildMemberDiscordId = guildMemberDiscordId,
+
+                    JoinedAt = dbMember.JoinedAt,
+                    FirstMessageDate = metrics.FirstMessage,
+                    LastMessageDate = metrics.LastMessage,
+                    DaysSinceJoined = (int)(DateTimeOffset.UtcNow - dbMember.JoinedAt).TotalDays,
+                    MessageCount = metrics.MessageSentCount,
+                    ReactionCount = metrics.ReactionAddedCount,
+                    GifsSentCount = metrics.GifsSentCount,
+                    CommandsSentCount = metrics.CommandsSentCount,
+                    VoiceChannelsTimeSpent = await membersRepository.GetTotalSecondsInVoiceChannelsByMemberDiscordIdAsync(guildMemberDiscordId),
+
+                    AvgToxicity = aiAnalysis.AvgToxicity,
+                    MostToxicMessage = aiAnalysis.MostToxicMessage,
+                    SpeechStyle = aiAnalysis.SpeechStyle,
+                    Tonality = aiAnalysis.Tonality,
+                    AvgCharsInMessage = aiAnalysis.AvgCharsInMessage
+                });
+
+        }
+        catch (DbUpdateException ex)
+        {
+            logger.LogError(
+                ex,
+                "Ошибка при попытке получить данные по участнику c DiscordId {GuildMemberDiscordId}",
+                guildMemberDiscordId);
+
+            return BaseResult<GuildMemberAnalysisResultData>.Fail(
+                new Error(
+                    ErrorCodes.DB_ERROR, 
+                    ex.Message));
+                
+        }
+    }
+
     public async Task<BaseResult> AuthorizeGuildMemberAsync(ulong guildMemberDiscordId, string guildMemberMention)
     {
         try
