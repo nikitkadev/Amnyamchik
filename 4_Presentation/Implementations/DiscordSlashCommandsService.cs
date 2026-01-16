@@ -1,8 +1,6 @@
 ﻿using Discord;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Enums;
 using MlkAdmin._3_Infrastructure.Interfaces;
-using MlkAdmin.Shared.Results;
 using MlkAdmin._4_Presentation.Interfaces;
 using MlkAdmin.Shared.Constants;
 using MlkAdmin.Shared.JsonProviders;
@@ -22,6 +20,7 @@ public class DiscordSlashCommandsService(
             await discordService.DiscordClient.Rest.BulkOverwriteGuildCommands([], providersHub.GuildConfigProvidersHub.GuildConfig.GuildDetails.DiscordId);
 
             SlashGuildCommands.Add(AddLobbyNameCommand());
+            SlashGuildCommands.Add(AddAnalysisCommand());
             SlashGuildCommands.Add(AddTestCommand());
 
             foreach (SlashCommandProperties? command in SlashGuildCommands)
@@ -46,6 +45,15 @@ public class DiscordSlashCommandsService(
             .Build();
     }
 
+    private static SlashCommandProperties? AddAnalysisCommand()
+    {
+        return new SlashCommandBuilder()
+            .WithName(MlkAdminConstants.GUILD_MEMBER_ANALYSIS_COMMAND_NAME)
+            .WithDescription("Проанализировать участника")
+            .AddOption("member", ApplicationCommandOptionType.User, "Участника сервера", isRequired: true)
+            .Build();
+    }
+
     private static SlashCommandProperties? AddTestCommand()
     {
         return new SlashCommandBuilder()
@@ -54,4 +62,5 @@ public class DiscordSlashCommandsService(
             .AddOption("prompt", ApplicationCommandOptionType.String, "Запрос к ChatGPT", isRequired: true)
             .Build();
     }
+   
 }
