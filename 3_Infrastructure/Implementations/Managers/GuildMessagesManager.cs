@@ -8,6 +8,7 @@ using MlkAdmin._2_Application.Interfaces.Services;
 using MlkAdmin._3_Infrastructure.Interfaces;
 using MlkAdmin.Shared.Constants;
 using MlkAdmin.Shared.Dtos;
+using MlkAdmin.Shared.Extensions;
 using MlkAdmin.Shared.JsonProviders;
 
 namespace MlkAdmin._2_Application.Managers.Messages;
@@ -336,5 +337,80 @@ public class GuildMessagesManager(
 
         await guildTextChannel.SendMessageAsync(
             components: messageComponent);
+    }
+    public async Task SendAnalyzeResultMessageAsync(SocketSlashCommand messageAction, GuildMemberAnalysisResultData data)
+    {
+        if (data is null)
+            return;
+
+        var component = new ComponentBuilderV2()
+            .WithContainer(
+                container =>
+                {
+                    container.WithTextDisplay(
+                        async text =>
+                        {
+                            text.WithContent($"Анализ участника {await discordService.GetGuildMemberMentionByIdAsync(data.GuildMemberDiscordId)}");
+                        });
+
+                    container.WithTextDisplay(
+                        async text =>
+                        {
+                            text.WithContent($"Дата вступления: {data.JoinedAt}\n" +
+                                $"Количество дней на сервере: {data.DaysSinceJoined}\n" +
+                                $"Дата первого сообщения: {data.FirstMessageDate:g}\n" +
+                                $"Дата крайнего сообщения: {data.LastMessageDate:g}");
+                        });
+
+                    container.WithTextDisplay(
+                        text =>
+                        {
+                            text.WithContent($"Метрики");
+                        });
+
+                    container.WithTextDisplay(
+                        text =>
+                        {
+                            text.WithContent($"Отправлено сообщений: {data.MessageCount}\n" +
+                                $"Реакций добавлено: {data.ReactionCount}\n" +
+                                $"Отправлено картинок: {data.PicturesSentCount}\n" +
+                                $"Отправлено гифов: {data.GifsSentCount}\n" +
+                                $"Вызвано слеш-команд: {data.CommandsSentCount}\n" +
+                                $"Времени в голосовых каналах: {TimeExtension.ConvertTimeFromSecond(data.VoiceChannelsTimeSpent)}\n");
+                        });
+
+                    container.WithTextDisplay(
+                        text =>
+                        {
+                            text.WithContent("AI - анализ последней активности");
+                        });
+
+                    container.WithTextDisplay(
+                        text =>
+                        {
+                            text.WithContent($"Средний процент токсичности: {data.AvgToxicity}\n" +
+                                $"Самое токсичное сообщение: {data.MostToxicMessage}\n" +
+                                $"Стиль речи: {data.SpeechStyle}\n" +
+                                $"Тональность речи: {data.Tonality}\n" +
+                                $"Средняя длина сообщений: {data.AvgCharsInMessage} символов / сообщение");
+                        });
+
+                    container.WithSeparator();
+
+                    container.WithActionRow(
+                        row =>
+                        {
+                            row.WithButton(
+                                button =>
+                                {
+                                    button.WithLabel("Расширенный анализ");
+                                    button.WithStyle(ButtonStyle.Secondary);
+                                    button.WithCustomId(MlkAdminConstants.BUTTONS_ADVANCED_ANALYSIS_CUSTOM_ID);
+                                });
+                        });
+                })
+            .Build();
+
+        await messageAction.FollowupAsync(components: component);
     }
 }

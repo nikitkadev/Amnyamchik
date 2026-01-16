@@ -12,4 +12,5 @@ public interface IGuildMessagesManager
     Task SendWelcomeMessageAsync(ulong newMemberDiscordId);
     Task SendColorsMenuResponseAsync(SocketMessageComponent messageAction);
     Task SendLogMessageAsync(LogMessageDto logMessageDto);
+    Task SendAnalyzeResultMessageAsync(SocketSlashCommand messageAction, GuildMemberAnalysisResultData data);
 }

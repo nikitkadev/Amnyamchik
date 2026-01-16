@@ -1,6 +1,8 @@
-﻿namespace MlkAdmin._4_Presentation.Interfaces;
+﻿using MlkAdmin.Shared.Dtos;
+
+namespace MlkAdmin._4_Presentation.Interfaces;
 
 public interface IChatGPTService
 {
-    Task<string> ResponseAsync(string memberPrompt);
+    Task<GuildMemberAIAnalysisResultDto> AnalyzeWithAIGuildMemberAsync(IReadOnlyCollection<string?> guildMemberMessages);
 }

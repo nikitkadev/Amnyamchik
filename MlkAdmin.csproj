@@ -8,6 +8,7 @@
 	<Version>1.1.1</Version>
 	<Description>Discord Bot for Malenkie Guild</Description>
     <Nullable>enable</Nullable>
+    <UserSecretsId>f1aba275-b93f-42cc-a20a-623312f8297d</UserSecretsId>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MediatR" Version="14.0.0" />

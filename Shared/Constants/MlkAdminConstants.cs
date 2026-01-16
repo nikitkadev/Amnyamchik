@@ -19,6 +19,8 @@ public static class MlkAdminConstants
     public const string BUTTONS_RULES_CUSTOM_ID = "BUTTON_RULES";
     public const string BUTTONS_COLORS_CUSTOM_ID = "BUTTON_COLORS";
     public const string BUTTONS_TOTEMANIMAL_CUSTOM_ID = "BUTTON_TOTEMANIMAL";
+    public const string BUTTONS_ADVANCED_ANALYSIS_CUSTOM_ID = "BUTTONS_ADVANCED_ANALYSIS";
+
 
     #endregion
 
@@ -31,7 +33,7 @@ public static class MlkAdminConstants
     #region COMMANDS_NAME
 
     public const string SET_VOICEROOM_COMMAND_NAME = "set-voiceroom";
-    public const string GUILD_MEMBER_STAT_COMMAND_NAME = "analyze";
+    public const string GUILD_MEMBER_ANALYSIS_COMMAND_NAME = "analyze";
     public const string TESTING_COMMAND_NAME = "testing-dev";
 
     #endregion

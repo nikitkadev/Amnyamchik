@@ -1,5 +1,7 @@
 ﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using MlkAdmin._2_Application.Commands.AnalyzeGuildMember;
 using MlkAdmin._2_Application.Commands.SetupGuildVoiceRoom;
 using MlkAdmin._2_Application.Commands.Test;
 using MlkAdmin._2_Application.Interfaces.Managers;
@@ -61,6 +63,41 @@ public class SlashCommandExecutedHandler(
 
                     break;
                 }
+
+            case MlkAdminConstants.GUILD_MEMBER_ANALYSIS_COMMAND_NAME:
+
+                try
+                {
+                    var analysisResult = await mediator.Send(
+                        new AnalyzeGuildMemberCommand()
+                        {
+                            GuildMemberDiscordId = command.User.Id
+                        }, 
+                        token);
+
+                    await messagesManager.SendAnalyzeResultMessageAsync(command, analysisResult.Value);
+
+                    break;
+                }
+                catch (DbUpdateException ex)
+                {
+                    logger.LogError(
+                        ex,
+                        "Ошибка при попытке анализа участника с DiscordId {GuildMemberDiscordId}",
+                        command.User.Id);
+
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError(
+                        ex,
+                        "Ошибка при попытке обработать команду {CommandName} настройки личной голосовой комнаты",
+                        MlkAdminConstants.GUILD_MEMBER_ANALYSIS_COMMAND_NAME);
+
+                    break;
+                }
+
 
             case MlkAdminConstants.TESTING_COMMAND_NAME:
 

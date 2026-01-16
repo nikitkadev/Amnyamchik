@@ -1,13 +1,15 @@
 ﻿using MediatR;
+using MlkAdmin._2_Application.Interfaces.Managers;
 using MlkAdmin.Shared.Dtos;
 using MlkAdmin.Shared.Results;
 
 namespace MlkAdmin._2_Application.Commands.AnalyzeGuildMember;
 
-public class AnalyzeGuildMemberCommandHandler : IRequestHandler<AnalyzeGuildMemberCommand, BaseResult<GuildMemberAnalyzeData>>
+public class AnalyzeGuildMemberCommandHandler(
+    IGuildMembersManager membersManager) : IRequestHandler<AnalyzeGuildMemberCommand, BaseResult<GuildMemberAnalysisResultData>>
 {
-    public async Task<BaseResult<GuildMemberAnalyzeData>> Handle(AnalyzeGuildMemberCommand request, CancellationToken cancellationToken)
+    public async Task<BaseResult<GuildMemberAnalysisResultData>> Handle(AnalyzeGuildMemberCommand request, CancellationToken cancellationToken)
     {
-        return default;
+        return await membersManager.AnalyzeGuildMemberAsync(request.GuildMemberDiscordId);
     }
 }

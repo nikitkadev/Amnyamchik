@@ -11,4 +11,5 @@ public interface IGuildMembersRepository
     Task <string> GetVoiceRoomNameAsync(ulong guildMemberDiscordId, CancellationToken token = default);
     Task UpdateVoiceRoomNameAsync(ulong guildMemberDiscordId, string voiceRoomName, CancellationToken token = default);
     Task<bool> IsAuthorizedAsync(ulong guildMemberDiscordId, CancellationToken token = default);
+    Task<long> GetTotalSecondsInVoiceChannelsByMemberDiscordIdAsync(ulong guildMemberDiscordId);
 }

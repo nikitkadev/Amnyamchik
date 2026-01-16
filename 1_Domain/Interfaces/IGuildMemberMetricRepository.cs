@@ -1,4 +1,6 @@
-﻿namespace MlkAdmin._1_Domain.Interfaces;
+﻿using MlkAdmin._1_Domain.Entities;
+
+namespace MlkAdmin._1_Domain.Interfaces;
 
 public interface IGuildMemberMetricRepository
 {
@@ -10,4 +12,6 @@ public interface IGuildMemberMetricRepository
     Task IncrementPngPictureSentCountAsync(ulong guildMemberDiscordId, int increment = 1);
 
     Task UpdateLastMessageDateAsync(ulong guildMemberDiscordId);
+
+    Task<GuildMemberMetric> GetGuildMemberMetricAsync(ulong guildMemberDiscordId);
 }
