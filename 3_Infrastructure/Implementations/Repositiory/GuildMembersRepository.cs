@@ -141,4 +141,9 @@ public class GuildMembersRepository(
 
         return dbMember.IsAuthorized;
     }
+
+    public async Task<long> GetTotalSecondsInVoiceChannelsByMemberDiscordIdAsync(ulong guildMemberDiscordId)
+    {
+        return await mlkAdminDbContext.GuildVoiceSessions.Where(session => session.GuildMemberDiscordId == guildMemberDiscordId).SumAsync(session => session.TotalSeconds);
+    }
 }

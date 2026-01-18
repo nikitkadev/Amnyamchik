@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using Discord.WebSocket;
+using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using MlkAdmin._2_Application.Commands.AnalyzeGuildMember;
@@ -68,11 +69,13 @@ public class SlashCommandExecutedHandler(
 
                 try
                 {
+                    var member = command.Data.Options.FirstOrDefault(option => option.Name == "member").Value as SocketUser;
+
                     var analysisResult = await mediator.Send(
                         new AnalyzeGuildMemberCommand()
                         {
-                            GuildMemberDiscordId = command.User.Id
-                        }, 
+                            GuildMemberDiscordId = member.Id
+                        },
                         token);
 
                     await messagesManager.SendAnalyzeResultMessageAsync(command, analysisResult.Value);

@@ -30,24 +30,23 @@ public class ChatGPTService(
                     "Требования:\n" +
                     "- Отвечай ТОЛЬКО JSON, без пояснений.\n" +
                     "- Все поля обязательны.\n" +
-                    "- Если данных недостаточно, ставь null или '-'."
-                ))
+                    "- Если данных недостаточно, ставь null или '-'.\n" +
+                    "Ниже список переданных сообщений от пользователя: "
+                )),
+                ChatMessage.CreateUserMessage(
+                    string.Join("\n", guildMemberMessages.Select((m, i) => $"[{i + 1}] {m}")))
             };
-
-            foreach (var msg in guildMemberMessages)
-                chatToSendMessages.Add(ChatMessage.CreateUserMessage(msg));
 
             var completion = (await chatClient.CompleteChatAsync(
                 chatToSendMessages,
                 new ChatCompletionOptions()
                 {
-                    MaxOutputTokenCount = 1000,
                     ResponseFormat = ChatResponseFormat.CreateJsonObjectFormat()
 
-                })).Value.Content[0].Text;
+                }));
 
             var aiAnalysisResult = JsonConvert.DeserializeObject<GuildMemberAIAnalysisResultDto>(
-                completion, 
+                completion.Value.Content[0].Text, 
                 new JsonSerializerSettings()
                 {
                     ContractResolver = new DefaultContractResolver()
