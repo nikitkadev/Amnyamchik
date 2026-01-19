@@ -77,6 +77,8 @@ public static class GuildBotDIRegistrator
     }
     public static IServiceCollection AddInfrastructureServices(this IServiceCollection services)
     {
+        services.AddScoped<IAnalysisService, AnalysisService>();
+
         services.AddSingleton<IDiscordService, DiscordService>();
         services.AddSingleton<IChatGPTService, ChatGPTService>();
 

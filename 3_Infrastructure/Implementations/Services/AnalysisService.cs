@@ -17,7 +17,7 @@ public class AnalysisService(ILogger<AnalysisService> logger,
         {
             var messages = await messagesRepository.GetMessagesColectionByMemberAsync(guildMemberDiscordId);
 
-            if(messages is null || messages.Count == 0)
+            if (messages is null || messages.Count == 0)
             {
                 logger.LogWarning(
                     "Сообщений от участника с DiscordId {GuildMemberDiscordId} не найдено",
