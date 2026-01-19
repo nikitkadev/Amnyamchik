@@ -1,6 +1,6 @@
-﻿using MlkAdmin._1_Domain.Entities;
+﻿using Amnyam._1_Domain.Entities;
 
-namespace MlkAdmin._1_Domain.Interfaces;
+namespace Amnyam._1_Domain.Interfaces;
 
 public interface IGuildChannelsRepository
 {

@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using MlkAdmin.Shared.Results;
+using Amnyam.Shared.Results;
 
-namespace MlkAdmin._2_Application.Commands.Test;
+namespace Amnyam._2_Application.Commands.Test;
 
 public class TestCommand : IRequest<BaseResult>
 {

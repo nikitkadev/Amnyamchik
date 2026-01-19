@@ -1,7 +1,7 @@
-﻿using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.App;
-using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.Guild;
+﻿using Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.App;
+using Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.Guild;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Interfaces.Hubs;
+namespace Amnyam._3_Infrastructure.Providers.Interfaces.Hubs;
 
 public interface IJsonGuildConfigProvidersHub
 {

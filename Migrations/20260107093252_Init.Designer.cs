@@ -4,12 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using MlkAdmin._3_Infrastructure.DataBase.EF;
+using Amnyam._3_Infrastructure.DataBase.EF;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace MlkAdmin.Migrations
+namespace Amnyam.Migrations
 {
     [DbContext(typeof(MlkAdminDbContext))]
     [Migration("20260107093252_Init")]
@@ -25,7 +25,7 @@ namespace MlkAdmin.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("MlkAdmin._1_Domain.Entities.GuildMember", b =>
+            modelBuilder.Entity("Amnyam._1_Domain.Entities.GuildMember", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -73,7 +73,7 @@ namespace MlkAdmin.Migrations
                     b.ToTable("guild_member", (string)null);
                 });
 
-            modelBuilder.Entity("MlkAdmin._1_Domain.Entities.GuildMessage", b =>
+            modelBuilder.Entity("Amnyam._1_Domain.Entities.GuildMessage", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -112,7 +112,7 @@ namespace MlkAdmin.Migrations
                     b.ToTable("guild_messages", (string)null);
                 });
 
-            modelBuilder.Entity("MlkAdmin._1_Domain.Entities.GuildTextChannel", b =>
+            modelBuilder.Entity("Amnyam._1_Domain.Entities.GuildTextChannel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -138,7 +138,7 @@ namespace MlkAdmin.Migrations
                     b.ToTable("text_channels", (string)null);
                 });
 
-            modelBuilder.Entity("MlkAdmin._1_Domain.Entities.GuildVoiceChannel", b =>
+            modelBuilder.Entity("Amnyam._1_Domain.Entities.GuildVoiceChannel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -172,7 +172,7 @@ namespace MlkAdmin.Migrations
                     b.ToTable("voice_channels", (string)null);
                 });
 
-            modelBuilder.Entity("MlkAdmin._1_Domain.Entities.GuildVoiceSession", b =>
+            modelBuilder.Entity("Amnyam._1_Domain.Entities.GuildVoiceSession", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

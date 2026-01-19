@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
-using MlkAdmin._3_Infrastructure.Providers.Models.Messages;
+using Amnyam._3_Infrastructure.Providers.Models.Messages;
 
-namespace MlkAdmin.Shared.JsonProviders;
+namespace Amnyam.Shared.JsonProviders;
 
 public abstract class JsonMessageProviderBase<T>(string path, ILogger<JsonMessageProviderBase<T>> logger) : JsonProviderBase<MessageBaseModel<T>>(path, logger), IJsonMessageContentProvider<T>
 {

@@ -1,7 +1,7 @@
-﻿using MlkAdmin._1_Domain.Entities;
-using MlkAdmin.Shared.Dtos;
+﻿using Amnyam._1_Domain.Entities;
+using Amnyam.Shared.Dtos;
 
-namespace MlkAdmin._2_Application.Interfaces.Services;
+namespace Amnyam._2_Application.Interfaces.Services;
 
 public interface IAnalysisService
 {

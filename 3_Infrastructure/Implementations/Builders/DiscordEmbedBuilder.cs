@@ -1,9 +1,9 @@
 ﻿using Discord;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._2_Application.Interfaces.Builders;
-using MlkAdmin.Shared.Dtos;
+using Amnyam._2_Application.Interfaces.Builders;
+using Amnyam.Shared.Dtos;
 
-namespace MlkAdmin._3_Infrastructure.Implementations.Builders;
+namespace Amnyam._3_Infrastructure.Implementations.Builders;
 
 public class DiscordEmbedBuilder(ILogger<DiscordEmbedBuilder> logger) : IDiscordEmbedBuilder
 {

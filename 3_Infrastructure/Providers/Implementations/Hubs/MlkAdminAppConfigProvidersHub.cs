@@ -1,7 +1,7 @@
-﻿using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.App;
-using MlkAdmin._3_Infrastructure.Providers.Interfaces.Hubs;
+﻿using Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.App;
+using Amnyam._3_Infrastructure.Providers.Interfaces.Hubs;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Implementations.Hubs
+namespace Amnyam._3_Infrastructure.Providers.Implementations.Hubs
 {
     public class MlkAdminAppConfigProvidersHub(
         IJsonMlkAdminAppConfigurationProvider mlkAdminAppConfigurationProvider) : IMlkAdminAppConfigProvidersHub

@@ -1,8 +1,8 @@
-﻿using MlkAdmin._1_Domain.Enums;
+﻿using Amnyam._1_Domain.Enums;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace MlkAdmin.Shared.Dtos;
+namespace Amnyam.Shared.Dtos;
 
 public class GuildRoleInfo
 {

@@ -2,7 +2,7 @@
 using Discord.WebSocket;
 using MediatR;
 
-namespace MlkAdmin._2_Application.Events.UserUpdated;
+namespace Amnyam._2_Application.Events.UserUpdated;
 
 public class GuildMemberUpdated(Cacheable<SocketGuildUser, ulong> oldUserState, SocketGuildUser newUserState) : INotification
 {

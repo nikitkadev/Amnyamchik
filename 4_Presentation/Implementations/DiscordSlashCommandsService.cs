@@ -1,11 +1,11 @@
 ﻿using Discord;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._3_Infrastructure.Interfaces;
-using MlkAdmin._4_Presentation.Interfaces;
-using MlkAdmin.Shared.Constants;
-using MlkAdmin.Shared.JsonProviders;
+using Amnyam._3_Infrastructure.Interfaces;
+using Amnyam._4_Presentation.Interfaces;
+using Amnyam.Shared.Constants;
+using Amnyam.Shared.JsonProviders;
 
-namespace MlkAdmin._4_Presentation.Discord;
+namespace Amnyam._4_Presentation.Discord;
 public class DiscordSlashCommandsService(
     ILogger<DiscordSlashCommandsService> logger,
     IDiscordService discordService,

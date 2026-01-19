@@ -1,8 +1,8 @@
-﻿using MlkAdmin._1_Domain.Entities;
-using MlkAdmin.Shared.Dtos;
-using MlkAdmin.Shared.Results;
+﻿using Amnyam._1_Domain.Entities;
+using Amnyam.Shared.Dtos;
+using Amnyam.Shared.Results;
 
-namespace MlkAdmin._2_Application.Interfaces.Managers;
+namespace Amnyam._2_Application.Interfaces.Managers;
 
 public interface IGuildMembersManager
 {

@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._2_Application.Interfaces.Services;
+using Amnyam._2_Application.Interfaces.Services;
 
-namespace MlkAdmin._2_Application.Events.GuildAvailable;
+namespace Amnyam._2_Application.Events.GuildAvailable;
 
 class GuildAvailableHandler(
     ILogger<GuildAvailableHandler> logger,

@@ -1,4 +1,4 @@
-﻿namespace MlkAdmin._3_Infrastructure.Providers.Models.Messages;
+﻿namespace Amnyam._3_Infrastructure.Providers.Models.Messages;
 
 public class MessageBaseModel<T>
 {

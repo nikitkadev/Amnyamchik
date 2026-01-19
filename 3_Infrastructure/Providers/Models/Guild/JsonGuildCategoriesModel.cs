@@ -1,4 +1,4 @@
-﻿namespace MlkAdmin._3_Infrastructure.Providers.Models.Guild;
+﻿namespace Amnyam._3_Infrastructure.Providers.Models.Guild;
 
 public class RootCategoriesModel
 {

@@ -1,6 +1,6 @@
-﻿using MlkAdmin.Shared.Dtos;
+﻿using Amnyam.Shared.Dtos;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.Guild;
+namespace Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.Guild;
 
 public interface IJsonGuildRolesProvider
 {

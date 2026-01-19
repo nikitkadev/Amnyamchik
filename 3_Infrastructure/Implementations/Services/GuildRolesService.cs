@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Exceptions;
-using MlkAdmin._2_Application.Interfaces.Services;
-using MlkAdmin._3_Infrastructure.Interfaces;
+using Amnyam._1_Domain.Exceptions;
+using Amnyam._2_Application.Interfaces.Services;
+using Amnyam._3_Infrastructure.Interfaces;
 
-namespace MlkAdmin._3_Infrastructure.Services;
+namespace Amnyam._3_Infrastructure.Services;
 
 public class GuildRolesService(
     ILogger<GuildRolesService> logger,

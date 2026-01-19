@@ -1,7 +1,7 @@
-﻿using MlkAdmin._2_Application.Interfaces.Services;
+﻿using Amnyam._2_Application.Interfaces.Services;
 using System.Collections.Concurrent;
 
-namespace MlkAdmin._3_Infrastructure.Cache
+namespace Amnyam._3_Infrastructure.Cache
 {
     public class GuildVoiceSessionCacheService : IGuildVoiceSessionCacheService
     {

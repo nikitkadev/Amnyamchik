@@ -3,23 +3,23 @@ using MediatR;
 using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
-using MlkAdmin._2_Application.Events.UserJoined;
-using MlkAdmin._2_Application.Events.UserLeft;
-using MlkAdmin._2_Application.Events.ModalSubmitted;
-using MlkAdmin._2_Application.Events.ButtonExecuted;
-using MlkAdmin._2_Application.Events.GuildAvailable;
-using MlkAdmin._2_Application.Events.SelectMenuExecuted;
-using MlkAdmin._2_Application.Events.UserVoiceStateUpdated;
-using MlkAdmin._2_Application.Events.Ready;
-using MlkAdmin._2_Application.Events.MessageReceived;
-using MlkAdmin._2_Application.Events.ReactionAdded;
-using MlkAdmin._2_Application.Events.UserUpdated;
-using MlkAdmin._2_Application.Events.SlashCommandExecuted;
-using MlkAdmin._3_Infrastructure.Interfaces;
-using MlkAdmin.Shared.Results;
-using MlkAdmin._4_Presentation.Discord;
+using Amnyam._2_Application.Events.UserJoined;
+using Amnyam._2_Application.Events.UserLeft;
+using Amnyam._2_Application.Events.ModalSubmitted;
+using Amnyam._2_Application.Events.ButtonExecuted;
+using Amnyam._2_Application.Events.GuildAvailable;
+using Amnyam._2_Application.Events.SelectMenuExecuted;
+using Amnyam._2_Application.Events.UserVoiceStateUpdated;
+using Amnyam._2_Application.Events.Ready;
+using Amnyam._2_Application.Events.MessageReceived;
+using Amnyam._2_Application.Events.ReactionAdded;
+using Amnyam._2_Application.Events.UserUpdated;
+using Amnyam._2_Application.Events.SlashCommandExecuted;
+using Amnyam._3_Infrastructure.Interfaces;
+using Amnyam.Shared.Results;
+using Amnyam._4_Presentation.Discord;
 
-namespace MlkAdmin.Presentation.DiscordListeners;
+namespace Amnyam.Presentation.DiscordListeners;
 
 public class DiscordEventsService(
     ILogger<DiscordEventsService> logger,

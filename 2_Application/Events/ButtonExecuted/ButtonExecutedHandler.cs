@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._2_Application.Interfaces.Managers;
-using MlkAdmin.Shared.Constants;
+using Amnyam._2_Application.Interfaces.Managers;
+using Amnyam.Shared.Constants;
 
-namespace MlkAdmin._2_Application.Events.ButtonExecuted;
+namespace Amnyam._2_Application.Events.ButtonExecuted;
 
 public class ButtonExecutedHandler(
     ILogger<ButtonExecutedHandler> logger,

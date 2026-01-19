@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
-using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.App;
-using MlkAdmin._3_Infrastructure.Providers.Models.App;
-using MlkAdmin.Shared.JsonProviders;
+using Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.App;
+using Amnyam._3_Infrastructure.Providers.Models.App;
+using Amnyam.Shared.JsonProviders;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Implementations.Configuration.App;
+namespace Amnyam._3_Infrastructure.Providers.Implementations.Configuration.App;
 
 public class JsonMlkAdminAppConfigurationProvider(string path, ILogger<JsonMlkAdminAppConfigurationProvider> logger) : JsonProviderBase<RootMlkAdminAppConfigurationModel>(path, logger), IJsonMlkAdminAppConfigurationProvider
 {

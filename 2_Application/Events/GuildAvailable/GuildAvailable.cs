@@ -1,7 +1,7 @@
 ﻿using Discord.WebSocket;
 using MediatR;
 
-namespace MlkAdmin._2_Application.Events.GuildAvailable;
+namespace Amnyam._2_Application.Events.GuildAvailable;
 
 class GuildAvailable(SocketGuild socketGuild) : INotification
 {

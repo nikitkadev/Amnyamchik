@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Entities;
-using MlkAdmin._1_Domain.Interfaces;
+using Amnyam._1_Domain.Entities;
+using Amnyam._1_Domain.Interfaces;
 
-namespace MlkAdmin._2_Application.Events.MessageReceived;
+namespace Amnyam._2_Application.Events.MessageReceived;
 
 public class MessageReceivedHandler(
     ILogger<MessageReceivedHandler> logger,

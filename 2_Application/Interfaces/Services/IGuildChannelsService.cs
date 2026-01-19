@@ -1,7 +1,7 @@
 ﻿using Discord.Rest;
 using Discord.WebSocket;
 
-namespace MlkAdmin._2_Application.Interfaces.Services;
+namespace Amnyam._2_Application.Interfaces.Services;
 
 public interface IGuildChannelsService
 {

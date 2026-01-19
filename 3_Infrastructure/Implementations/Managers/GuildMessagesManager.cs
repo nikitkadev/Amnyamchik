@@ -1,17 +1,17 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Exceptions;
-using MlkAdmin._2_Application.Interfaces.Builders;
-using MlkAdmin._2_Application.Interfaces.Managers;
-using MlkAdmin._2_Application.Interfaces.Services;
-using MlkAdmin._3_Infrastructure.Interfaces;
-using MlkAdmin.Shared.Constants;
-using MlkAdmin.Shared.Dtos;
-using MlkAdmin.Shared.Extensions;
-using MlkAdmin.Shared.JsonProviders;
+using Amnyam._1_Domain.Exceptions;
+using Amnyam._2_Application.Interfaces.Builders;
+using Amnyam._2_Application.Interfaces.Managers;
+using Amnyam._2_Application.Interfaces.Services;
+using Amnyam._3_Infrastructure.Interfaces;
+using Amnyam.Shared.Constants;
+using Amnyam.Shared.Dtos;
+using Amnyam.Shared.Extensions;
+using Amnyam.Shared.JsonProviders;
 
-namespace MlkAdmin._2_Application.Managers.Messages;
+namespace Amnyam._2_Application.Managers.Messages;
 
 public class GuildMessagesManager(
     ILogger<GuildMessagesManager> logger,

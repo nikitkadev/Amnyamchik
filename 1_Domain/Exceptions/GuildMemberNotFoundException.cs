@@ -1,4 +1,4 @@
-﻿namespace MlkAdmin._1_Domain.Exceptions;
+﻿namespace Amnyam._1_Domain.Exceptions;
 
 public sealed class GuildMemberNotFoundException(ulong guildMemberDiscordId) : DomainException($"Участник с DiscordId {guildMemberDiscordId} не найден")
 {

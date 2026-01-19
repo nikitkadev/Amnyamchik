@@ -1,7 +1,7 @@
-﻿using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.Messages;
-using MlkAdmin._3_Infrastructure.Providers.Interfaces.Hubs;
+﻿using Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.Messages;
+using Amnyam._3_Infrastructure.Providers.Interfaces.Hubs;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Implementations.Hubs.Messages;
+namespace Amnyam._3_Infrastructure.Providers.Implementations.Hubs.Messages;
 
 public class JsonMessageProvidersHub(
     IWelcomeMessageProvider welcomeMessage,

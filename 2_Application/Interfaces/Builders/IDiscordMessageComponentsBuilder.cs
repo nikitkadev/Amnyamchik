@@ -1,8 +1,8 @@
 ﻿using Discord;
-using MlkAdmin.Shared.Dtos;
-using MlkAdmin.Shared.Results;
+using Amnyam.Shared.Dtos;
+using Amnyam.Shared.Results;
 
-namespace MlkAdmin._2_Application.Interfaces.Builders;
+namespace Amnyam._2_Application.Interfaces.Builders;
 
 public interface IDiscordMessageComponentsBuilder
 {

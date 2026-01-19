@@ -1,8 +1,8 @@
 ﻿using Serilog;
 using Microsoft.Extensions.Hosting;
-using MlkAdmin.Presentation.DI;
+using Amnyam.Presentation.DI;
 
-namespace MlkAdmin.Presentation;
+namespace Amnyam.Presentation;
 
 class GuildBotStartup
 {

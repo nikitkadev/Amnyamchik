@@ -1,8 +1,8 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._2_Application.Interfaces.Managers;
+using Amnyam._2_Application.Interfaces.Managers;
 
-namespace MlkAdmin._2_Application.Events.UserLeft;
+namespace Amnyam._2_Application.Events.UserLeft;
 
 class UserLeftHandler(
     ILogger<UserLeftHandler> logger,

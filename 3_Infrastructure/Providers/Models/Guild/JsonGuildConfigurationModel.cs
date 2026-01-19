@@ -1,6 +1,6 @@
-﻿using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.Messages;
+﻿using Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.Messages;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Models.Guild;
+namespace Amnyam._3_Infrastructure.Providers.Models.Guild;
 
 public class RootGuildConfigurationModel
 {

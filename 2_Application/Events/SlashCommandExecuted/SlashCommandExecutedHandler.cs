@@ -2,14 +2,14 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._2_Application.Commands.AnalyzeGuildMember;
-using MlkAdmin._2_Application.Commands.SetupGuildVoiceRoom;
-using MlkAdmin._2_Application.Commands.Test;
-using MlkAdmin._2_Application.Interfaces.Managers;
-using MlkAdmin.Shared.Constants;
-using MlkAdmin.Shared.JsonProviders;
+using Amnyam._2_Application.Commands.AnalyzeGuildMember;
+using Amnyam._2_Application.Commands.SetupGuildVoiceRoom;
+using Amnyam._2_Application.Commands.Test;
+using Amnyam._2_Application.Interfaces.Managers;
+using Amnyam.Shared.Constants;
+using Amnyam.Shared.JsonProviders;
 
-namespace MlkAdmin._2_Application.Events.SlashCommandExecuted;
+namespace Amnyam._2_Application.Events.SlashCommandExecuted;
 
 public class SlashCommandExecutedHandler(
     ILogger<SlashCommandExecutedHandler> logger,

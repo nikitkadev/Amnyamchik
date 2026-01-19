@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MlkAdmin._1_Domain.Entities;
+using Amnyam._1_Domain.Entities;
 
-namespace MlkAdmin._3_Infrastructure.DataBase.EF;
+namespace Amnyam._3_Infrastructure.DataBase.EF;
 
 public class MlkAdminDbContext(DbContextOptions<MlkAdminDbContext> options) : DbContext(options)
 {

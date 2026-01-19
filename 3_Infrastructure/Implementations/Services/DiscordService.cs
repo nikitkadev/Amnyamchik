@@ -1,10 +1,10 @@
 ﻿using Discord;
 using Discord.WebSocket;
-using MlkAdmin._1_Domain.Exceptions;
-using MlkAdmin._3_Infrastructure.Interfaces;
-using MlkAdmin.Shared.JsonProviders;
+using Amnyam._1_Domain.Exceptions;
+using Amnyam._3_Infrastructure.Interfaces;
+using Amnyam.Shared.JsonProviders;
 
-namespace MlkAdmin._3_Infrastructure.Services;
+namespace Amnyam._3_Infrastructure.Services;
 
 public class DiscordService(
 	IJsonProvidersHub providersHub,

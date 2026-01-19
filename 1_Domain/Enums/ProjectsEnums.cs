@@ -1,4 +1,4 @@
-﻿namespace MlkAdmin._1_Domain.Enums;
+﻿namespace Amnyam._1_Domain.Enums;
 
 public enum ErrorCodes
 {

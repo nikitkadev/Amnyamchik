@@ -1,6 +1,6 @@
-﻿using MlkAdmin.Shared.Results;
+﻿using Amnyam.Shared.Results;
 
-namespace MlkAdmin._4_Presentation.Interfaces;
+namespace Amnyam._4_Presentation.Interfaces;
 
 public interface IDiscordSlashCommandsService
 {

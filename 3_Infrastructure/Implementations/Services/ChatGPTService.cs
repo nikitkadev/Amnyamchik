@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Logging;
-using MlkAdmin._4_Presentation.Interfaces;
-using MlkAdmin.Shared.Dtos;
+using Amnyam._4_Presentation.Interfaces;
+using Amnyam.Shared.Dtos;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using OpenAI.Chat;
 using System.Globalization;
 
-namespace MlkAdmin._3_Infrastructure.Implementations.Services;
+namespace Amnyam._3_Infrastructure.Implementations.Services;
 
 public class ChatGPTService(
     ILogger<ChatGPTService> logger,

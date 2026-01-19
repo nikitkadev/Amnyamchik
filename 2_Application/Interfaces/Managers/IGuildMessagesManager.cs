@@ -1,7 +1,7 @@
 ﻿using Discord.WebSocket;
-using MlkAdmin.Shared.Dtos;
+using Amnyam.Shared.Dtos;
 
-namespace MlkAdmin._2_Application.Interfaces.Managers;
+namespace Amnyam._2_Application.Interfaces.Managers;
 
 public interface IGuildMessagesManager
 {

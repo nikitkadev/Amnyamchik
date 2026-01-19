@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Interfaces;
-using MlkAdmin._2_Application.Interfaces.Managers;
-using MlkAdmin._2_Application.Interfaces.Services;
+using Amnyam._1_Domain.Interfaces;
+using Amnyam._2_Application.Interfaces.Managers;
+using Amnyam._2_Application.Interfaces.Services;
 
-namespace MlkAdmin._3_Infrastructure.Implementations.Services;
+namespace Amnyam._3_Infrastructure.Implementations.Services;
 
 internal class GuildInitializationService(
     ILogger<GuildInitializationService> logger,

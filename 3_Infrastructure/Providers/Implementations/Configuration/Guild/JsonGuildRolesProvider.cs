@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Enums;
-using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.Guild;
-using MlkAdmin._3_Infrastructure.Providers.Models.Guild;
-using MlkAdmin.Shared.Dtos;
-using MlkAdmin.Shared.JsonProviders;
+using Amnyam._1_Domain.Enums;
+using Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.Guild;
+using Amnyam._3_Infrastructure.Providers.Models.Guild;
+using Amnyam.Shared.Dtos;
+using Amnyam.Shared.JsonProviders;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Implementations.Configuration.Guild;
+namespace Amnyam._3_Infrastructure.Providers.Implementations.Configuration.Guild;
 
 public class JsonGuildRolesProvider(string path, ILogger<JsonGuildRolesProvider> logger) : JsonProviderBase<RolesListModel>(path, logger), IJsonGuildRolesProvider
 {

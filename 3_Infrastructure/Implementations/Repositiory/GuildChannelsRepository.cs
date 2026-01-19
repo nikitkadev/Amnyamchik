@@ -1,13 +1,13 @@
 ﻿using System.Linq.Expressions;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using MlkAdmin._1_Domain.Entities;
-using MlkAdmin._1_Domain.Interfaces;
-using MlkAdmin._3_Infrastructure.DataBase.EF;
-using MlkAdmin._3_Infrastructure.Interfaces;
-using MlkAdmin.Shared.JsonProviders;
+using Amnyam._1_Domain.Entities;
+using Amnyam._1_Domain.Interfaces;
+using Amnyam._3_Infrastructure.DataBase.EF;
+using Amnyam._3_Infrastructure.Interfaces;
+using Amnyam.Shared.JsonProviders;
 
-namespace MlkAdmin._2_Application.Managers.Channels.VoiceChannels;
+namespace Amnyam._2_Application.Managers.Channels.VoiceChannels;
 
 public class GuildChannelsRepository(
     ILogger<GuildChannelsRepository> logger, 

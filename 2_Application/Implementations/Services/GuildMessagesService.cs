@@ -1,11 +1,11 @@
 ﻿using Discord;
 using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._2_Application.Interfaces.Builders;
-using MlkAdmin._2_Application.Interfaces.Services;
-using MlkAdmin.Shared.Dtos;
+using Amnyam._2_Application.Interfaces.Builders;
+using Amnyam._2_Application.Interfaces.Services;
+using Amnyam.Shared.Dtos;
 
-namespace MlkAdmin._2_Application.Implementations.Services;
+namespace Amnyam._2_Application.Implementations.Services;
 
 public class GuildMessagesService(
     ILogger<GuildMessagesService> logger,

@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace MlkAdmin.Shared.JsonProviders;
+namespace Amnyam.Shared.JsonProviders;
 
 public static class JsonProviderExtensions
 {

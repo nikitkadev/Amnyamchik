@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MlkAdmin.Migrations
+namespace Amnyam.Migrations
 {
     /// <inheritdoc />
     public partial class AddGuildMemberMetric : Migration

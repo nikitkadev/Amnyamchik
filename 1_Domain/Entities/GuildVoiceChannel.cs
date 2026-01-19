@@ -1,4 +1,4 @@
-﻿namespace MlkAdmin._1_Domain.Entities;
+﻿namespace Amnyam._1_Domain.Entities;
 
 public class GuildVoiceChannel
 {

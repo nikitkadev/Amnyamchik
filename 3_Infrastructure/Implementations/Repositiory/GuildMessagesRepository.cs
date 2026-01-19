@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Entities;
-using MlkAdmin._1_Domain.Interfaces;
-using MlkAdmin._3_Infrastructure.DataBase.EF;
+using Amnyam._1_Domain.Entities;
+using Amnyam._1_Domain.Interfaces;
+using Amnyam._3_Infrastructure.DataBase.EF;
 
-namespace MlkAdmin._3_Infrastructure.Implementations.Services;
+namespace Amnyam._3_Infrastructure.Implementations.Services;
 
 public class GuildMessagesRepository(
     ILogger<GuildMessagesRepository> logger,

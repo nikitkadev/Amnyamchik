@@ -1,11 +1,11 @@
 ﻿using Discord;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using MlkAdmin._3_Infrastructure.Interfaces;
-using MlkAdmin._4_Presentation.Discord;
-using MlkAdmin.Shared.JsonProviders;
+using Amnyam._3_Infrastructure.Interfaces;
+using Amnyam._4_Presentation.Discord;
+using Amnyam.Shared.JsonProviders;
 
-namespace MlkAdmin.Presentation.PresentationServices;
+namespace Amnyam.Presentation.PresentationServices;
 
 public class GuildBotHostedService(
     IServiceScopeFactory scopeFactory) : IHostedService

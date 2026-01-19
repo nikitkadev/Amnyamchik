@@ -1,4 +1,4 @@
-﻿namespace MlkAdmin._3_Infrastructure.Providers.Models.App;
+﻿namespace Amnyam._3_Infrastructure.Providers.Models.App;
 
 public class RootMlkAdminAppConfigurationModel
 {

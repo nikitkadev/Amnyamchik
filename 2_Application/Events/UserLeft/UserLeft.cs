@@ -1,7 +1,7 @@
 ﻿using Discord.WebSocket;
 using MediatR;
 
-namespace MlkAdmin._2_Application.Events.UserLeft;
+namespace Amnyam._2_Application.Events.UserLeft;
 
 class UserLeft(SocketGuild socketGuild, SocketUser socketUser) : INotification
 {

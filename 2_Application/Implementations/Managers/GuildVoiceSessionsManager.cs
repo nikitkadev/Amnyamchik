@@ -1,12 +1,12 @@
 ﻿using Discord.WebSocket;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Entities;
-using MlkAdmin._1_Domain.Interfaces;
-using MlkAdmin._2_Application.Interfaces.Managers;
-using MlkAdmin._2_Application.Interfaces.Services;
+using Amnyam._1_Domain.Entities;
+using Amnyam._1_Domain.Interfaces;
+using Amnyam._2_Application.Interfaces.Managers;
+using Amnyam._2_Application.Interfaces.Services;
 
-namespace MlkAdmin._2_Application.Implementations.Managers;
+namespace Amnyam._2_Application.Implementations.Managers;
 
 
 public class GuildVoiceSessionsManager(

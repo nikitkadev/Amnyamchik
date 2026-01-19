@@ -2,13 +2,13 @@
 using Discord.Rest;
 using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Exceptions;
-using MlkAdmin._1_Domain.Interfaces;
-using MlkAdmin._2_Application.Interfaces.Services;
-using MlkAdmin._3_Infrastructure.Interfaces;
-using MlkAdmin.Shared.JsonProviders;
+using Amnyam._1_Domain.Exceptions;
+using Amnyam._1_Domain.Interfaces;
+using Amnyam._2_Application.Interfaces.Services;
+using Amnyam._3_Infrastructure.Interfaces;
+using Amnyam.Shared.JsonProviders;
 
-namespace MlkAdmin._2_Application.Implementations.Services;
+namespace Amnyam._2_Application.Implementations.Services;
 
 public class GuildChannelsService(
     ILogger<GuildChannelsService> logger,

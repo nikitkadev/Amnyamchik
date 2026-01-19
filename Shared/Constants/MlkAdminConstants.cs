@@ -1,4 +1,4 @@
-﻿namespace MlkAdmin.Shared.Constants;
+﻿namespace Amnyam.Shared.Constants;
 
 public static class MlkAdminConstants
 {

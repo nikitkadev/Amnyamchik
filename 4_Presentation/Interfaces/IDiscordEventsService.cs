@@ -1,4 +1,4 @@
-﻿namespace MlkAdmin._4_Presentation.Discord;
+﻿namespace Amnyam._4_Presentation.Discord;
 
 public interface IDiscordEventsService
 {

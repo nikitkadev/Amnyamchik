@@ -1,17 +1,17 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using MlkAdmin._1_Domain.Enums;
-using MlkAdmin._1_Domain.Entities;
-using MlkAdmin._1_Domain.Exceptions;
-using MlkAdmin._1_Domain.Interfaces;
-using MlkAdmin._2_Application.Interfaces.Services;
-using MlkAdmin._2_Application.Interfaces.Managers;
-using MlkAdmin.Shared.Dtos;
-using MlkAdmin.Shared.Results;
-using MlkAdmin.Shared.Constants;
-using MlkAdmin.Shared.JsonProviders;
+using Amnyam._1_Domain.Enums;
+using Amnyam._1_Domain.Entities;
+using Amnyam._1_Domain.Exceptions;
+using Amnyam._1_Domain.Interfaces;
+using Amnyam._2_Application.Interfaces.Services;
+using Amnyam._2_Application.Interfaces.Managers;
+using Amnyam.Shared.Dtos;
+using Amnyam.Shared.Results;
+using Amnyam.Shared.Constants;
+using Amnyam.Shared.JsonProviders;
 
-namespace MlkAdmin._2_Application.Implementations.Managers;
+namespace Amnyam._2_Application.Implementations.Managers;
 
 public class GuildMembersManager(
     ILogger<GuildMembersManager> logger,

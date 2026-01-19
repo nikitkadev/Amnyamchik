@@ -1,4 +1,4 @@
-﻿namespace MlkAdmin.Shared.JsonProviders;
+﻿namespace Amnyam.Shared.JsonProviders;
 
 public interface IJsonProvider<T>
 {

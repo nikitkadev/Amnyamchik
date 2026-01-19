@@ -1,6 +1,6 @@
-﻿using MlkAdmin._3_Infrastructure.Providers.Models.Guild;
+﻿using Amnyam._3_Infrastructure.Providers.Models.Guild;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.Guild;
+namespace Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.Guild;
 
 public interface IJsonGuildCategoriesProvider
 {

@@ -1,6 +1,6 @@
-﻿using MlkAdmin._3_Infrastructure.Providers.Models.App;
+﻿using Amnyam._3_Infrastructure.Providers.Models.App;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.App;
+namespace Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.App;
 
 public interface IJsonMlkAdminAppConfigurationProvider
 {

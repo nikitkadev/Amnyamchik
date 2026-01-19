@@ -1,7 +1,7 @@
 ﻿using Discord;
-using MlkAdmin.Shared.Dtos;
+using Amnyam.Shared.Dtos;
 
-namespace MlkAdmin._2_Application.Interfaces.Builders;
+namespace Amnyam._2_Application.Interfaces.Builders;
 
 public interface IDiscordEmbedBuilder
 {

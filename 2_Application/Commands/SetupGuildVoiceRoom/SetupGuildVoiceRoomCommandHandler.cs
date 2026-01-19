@@ -1,13 +1,13 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
-using MlkAdmin._1_Domain.Exceptions;
-using MlkAdmin._1_Domain.Interfaces;
-using MlkAdmin._1_Domain.Enums;
-using MlkAdmin.Shared.Constants;
-using MlkAdmin.Shared.Results;
+using Amnyam._1_Domain.Exceptions;
+using Amnyam._1_Domain.Interfaces;
+using Amnyam._1_Domain.Enums;
+using Amnyam.Shared.Constants;
+using Amnyam.Shared.Results;
 
-namespace MlkAdmin._2_Application.Commands.SetupGuildVoiceRoom;
+namespace Amnyam._2_Application.Commands.SetupGuildVoiceRoom;
 
 public class SetupGuildVoiceRoomCommandHandler(
     ILogger<SetupGuildVoiceRoomCommandHandler> logger,

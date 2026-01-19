@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using MlkAdmin.Shared.Dtos;
+using Amnyam.Shared.Dtos;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Models.Guild;
+namespace Amnyam._3_Infrastructure.Providers.Models.Guild;
 
 public class RolesListModel
 {

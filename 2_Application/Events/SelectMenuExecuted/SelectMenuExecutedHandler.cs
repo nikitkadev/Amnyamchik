@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._2_Application.Interfaces.Managers;
-using MlkAdmin.Shared.Constants;
+using Amnyam._2_Application.Interfaces.Managers;
+using Amnyam.Shared.Constants;
 
-namespace MlkAdmin._2_Application.Events.SelectMenuExecuted;
+namespace Amnyam._2_Application.Events.SelectMenuExecuted;
 
 class SelectMenuExecutedHandler(
     ILogger<SelectMenuExecutedHandler> logger,

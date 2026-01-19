@@ -1,6 +1,6 @@
-﻿using MlkAdmin.Shared.Dtos;
+﻿using Amnyam.Shared.Dtos;
 
-namespace MlkAdmin._4_Presentation.Interfaces;
+namespace Amnyam._4_Presentation.Interfaces;
 
 public interface IChatGPTService
 {

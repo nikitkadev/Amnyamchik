@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Interfaces;
+using Amnyam._1_Domain.Interfaces;
 
-namespace MlkAdmin._2_Application.Events.ReactionAdded;
+namespace Amnyam._2_Application.Events.ReactionAdded;
 
 public class ReactionAddedHandler(
     ILogger<ReactionAddedHandler> logger,

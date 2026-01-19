@@ -1,9 +1,9 @@
 ﻿using MediatR;
-using MlkAdmin._2_Application.Interfaces.Managers;
-using MlkAdmin.Shared.Dtos;
-using MlkAdmin.Shared.Results;
+using Amnyam._2_Application.Interfaces.Managers;
+using Amnyam.Shared.Dtos;
+using Amnyam.Shared.Results;
 
-namespace MlkAdmin._2_Application.Commands.AnalyzeGuildMember;
+namespace Amnyam._2_Application.Commands.AnalyzeGuildMember;
 
 public class AnalyzeGuildMemberCommandHandler(
     IGuildMembersManager membersManager) : IRequestHandler<AnalyzeGuildMemberCommand, BaseResult<GuildMemberAnalysisResultData>>

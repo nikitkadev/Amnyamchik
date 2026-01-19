@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Entities;
-using MlkAdmin._1_Domain.Interfaces;
-using MlkAdmin._2_Application.Interfaces.Services;
+using Amnyam._1_Domain.Entities;
+using Amnyam._1_Domain.Interfaces;
+using Amnyam._2_Application.Interfaces.Services;
 
-namespace MlkAdmin._2_Application.Events.UserVoiceStateUpdated;
+namespace Amnyam._2_Application.Events.UserVoiceStateUpdated;
 
 class UserVoiceStateUpdatedHandler(
     ILogger<UserVoiceStateUpdatedHandler> logger,

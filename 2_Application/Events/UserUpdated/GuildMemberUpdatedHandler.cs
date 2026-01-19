@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace MlkAdmin._2_Application.Events.UserUpdated;
+namespace Amnyam._2_Application.Events.UserUpdated;
 
 public class GuildMemberUpdatedHandler : INotificationHandler<GuildMemberUpdated>
 {

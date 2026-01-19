@@ -1,6 +1,6 @@
 ﻿using Discord;
 
-namespace MlkAdmin.Shared.Dtos;
+namespace Amnyam.Shared.Dtos;
 
 public class GuildMessageEmbedDto
 {

@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Interfaces;
+using Amnyam._1_Domain.Interfaces;
 
-namespace MlkAdmin._2_Application.Events.SlashCommandExecuted;
+namespace Amnyam._2_Application.Events.SlashCommandExecuted;
 
 public class SlashCommandCountHandler(
     ILogger<SlashCommandCountHandler> logger,

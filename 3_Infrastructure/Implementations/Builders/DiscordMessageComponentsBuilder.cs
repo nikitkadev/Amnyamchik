@@ -1,11 +1,11 @@
 ﻿using Discord;
-using MlkAdmin.Shared.Results;
+using Amnyam.Shared.Results;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Enums;
-using MlkAdmin._2_Application.Interfaces.Builders;
-using MlkAdmin.Shared.Dtos;
+using Amnyam._1_Domain.Enums;
+using Amnyam._2_Application.Interfaces.Builders;
+using Amnyam.Shared.Dtos;
 
-namespace MlkAdmin._3_Infrastructure.Services;
+namespace Amnyam._3_Infrastructure.Services;
 
 public class DiscordMessageComponentsBuilder(ILogger<DiscordMessageComponentsBuilder> logger) : IDiscordMessageComponentsBuilder
 {

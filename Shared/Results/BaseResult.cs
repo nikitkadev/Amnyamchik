@@ -1,6 +1,6 @@
-﻿using MlkAdmin._1_Domain.Enums;
+﻿using Amnyam._1_Domain.Enums;
 
-namespace MlkAdmin.Shared.Results;
+namespace Amnyam.Shared.Results;
 
 public readonly struct BaseResult<T>(bool isSuccess, T? value, Error? error)
 {

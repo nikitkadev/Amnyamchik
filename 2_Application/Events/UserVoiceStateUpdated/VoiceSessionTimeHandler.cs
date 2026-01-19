@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using MlkAdmin._2_Application.Interfaces.Managers;
+using Amnyam._2_Application.Interfaces.Managers;
 
-namespace MlkAdmin._2_Application.Events.UserVoiceStateUpdated;
+namespace Amnyam._2_Application.Events.UserVoiceStateUpdated;
 
 public class VoiceSessionTimeHandler(
     IGuildVoiceSessionsManager voiceSessionsManager) : INotificationHandler<UserVoiceStateUpdated>

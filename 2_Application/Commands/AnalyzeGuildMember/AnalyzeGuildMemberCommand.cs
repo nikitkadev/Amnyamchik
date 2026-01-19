@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using MlkAdmin.Shared.Results;
-using MlkAdmin.Shared.Dtos;
+using Amnyam.Shared.Results;
+using Amnyam.Shared.Dtos;
 
-namespace MlkAdmin._2_Application.Commands.AnalyzeGuildMember;
+namespace Amnyam._2_Application.Commands.AnalyzeGuildMember;
 
 public class AnalyzeGuildMemberCommand : IRequest<BaseResult<GuildMemberAnalysisResultData>>
 {

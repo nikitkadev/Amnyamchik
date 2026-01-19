@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MlkAdmin._1_Domain.Entities;
-using MlkAdmin._1_Domain.Interfaces;
-using MlkAdmin._3_Infrastructure.DataBase.EF;
+using Amnyam._1_Domain.Entities;
+using Amnyam._1_Domain.Interfaces;
+using Amnyam._3_Infrastructure.DataBase.EF;
 
-namespace MlkAdmin._3_Infrastructure.Implementations.Repositiory;
+namespace Amnyam._3_Infrastructure.Implementations.Repositiory;
 
 public class GuildMemberMetricRepository(
     MlkAdminDbContext dbContext) : IGuildMemberMetricRepository

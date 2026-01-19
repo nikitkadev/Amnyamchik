@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Entities;
-using MlkAdmin._2_Application.Interfaces.Managers;
+using Amnyam._1_Domain.Entities;
+using Amnyam._2_Application.Interfaces.Managers;
 
-namespace MlkAdmin._2_Application.Events.UserJoined;
+namespace Amnyam._2_Application.Events.UserJoined;
 
 class UserJoinedHandler(
     ILogger<UserJoinedHandler> logger,

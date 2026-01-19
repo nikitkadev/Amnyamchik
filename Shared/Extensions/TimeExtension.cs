@@ -1,4 +1,4 @@
-﻿namespace MlkAdmin.Shared.Extensions;
+﻿namespace Amnyam.Shared.Extensions;
 
 public static class TimeExtension
 {

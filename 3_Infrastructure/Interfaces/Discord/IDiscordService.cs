@@ -1,7 +1,7 @@
 ﻿using Discord;
 using Discord.WebSocket;
 
-namespace MlkAdmin._3_Infrastructure.Interfaces;
+namespace Amnyam._3_Infrastructure.Interfaces;
 
 public interface IDiscordService
 {

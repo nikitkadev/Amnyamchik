@@ -1,6 +1,6 @@
-﻿using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.App;
+﻿using Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.App;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Interfaces.Hubs;
+namespace Amnyam._3_Infrastructure.Providers.Interfaces.Hubs;
 
 public interface IMlkAdminAppConfigProvidersHub
 {

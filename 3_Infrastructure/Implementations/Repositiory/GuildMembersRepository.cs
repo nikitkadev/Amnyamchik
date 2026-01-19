@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using MlkAdmin._1_Domain.Entities;
-using MlkAdmin._1_Domain.Exceptions;
-using MlkAdmin._1_Domain.Interfaces;
-using MlkAdmin._3_Infrastructure.DataBase.EF;
-using MlkAdmin._3_Infrastructure.Interfaces;
-using MlkAdmin.Shared.Constants;
+using Amnyam._1_Domain.Entities;
+using Amnyam._1_Domain.Exceptions;
+using Amnyam._1_Domain.Interfaces;
+using Amnyam._3_Infrastructure.DataBase.EF;
+using Amnyam._3_Infrastructure.Interfaces;
+using Amnyam.Shared.Constants;
 
-namespace MlkAdmin._2_Application.Managers.Users;
+namespace Amnyam._2_Application.Managers.Users;
 
 public class GuildMembersRepository(
     IDiscordService discordService,

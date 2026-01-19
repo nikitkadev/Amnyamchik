@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
-using MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.Messages;
-using MlkAdmin.Shared.JsonProviders;
+using Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.Messages;
+using Amnyam.Shared.JsonProviders;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Implementations.Configuration.Messages;
+namespace Amnyam._3_Infrastructure.Providers.Implementations.Configuration.Messages;
 
 public class JsonColorsMessageProvider(string path, ILogger<JsonColorsMessageProvider> logger) 
     : JsonMessageProviderBase<string>(path, logger), IColorMessageProvider

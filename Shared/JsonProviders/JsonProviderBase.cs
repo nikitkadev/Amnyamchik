@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace MlkAdmin.Shared.JsonProviders;
+namespace Amnyam.Shared.JsonProviders;
 
 public abstract class JsonProviderBase<T>(string path, ILogger logger) : IJsonProvider<T> where T : class
 {

@@ -3,7 +3,7 @@ using Discord.WebSocket;
 using Microsoft.Extensions.Logging;
 using System.Transactions;
 
-namespace MlkAdmin._2_Application.Events.ModalSubmitted;
+namespace Amnyam._2_Application.Events.ModalSubmitted;
 
 class ModalSubmittedHandler(
     ILogger<ModalSubmittedHandler> logger) : INotificationHandler<ModalSubmitted>

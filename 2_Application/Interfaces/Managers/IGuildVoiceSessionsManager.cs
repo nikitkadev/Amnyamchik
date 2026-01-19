@@ -1,6 +1,6 @@
 ﻿using Discord.WebSocket;
 
-namespace MlkAdmin._2_Application.Interfaces.Managers;
+namespace Amnyam._2_Application.Interfaces.Managers;
 
 public interface IGuildVoiceSessionsManager
 {

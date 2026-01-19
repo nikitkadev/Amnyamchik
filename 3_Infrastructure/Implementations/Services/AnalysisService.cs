@@ -1,11 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-using MlkAdmin._1_Domain.Interfaces;
-using MlkAdmin._2_Application.Interfaces.Services;
-using MlkAdmin._4_Presentation.Interfaces;
-using MlkAdmin.Shared.Dtos;
+using Amnyam._1_Domain.Interfaces;
+using Amnyam._2_Application.Interfaces.Services;
+using Amnyam._4_Presentation.Interfaces;
+using Amnyam.Shared.Dtos;
 
-namespace MlkAdmin._3_Infrastructure.Implementations.Services;
+namespace Amnyam._3_Infrastructure.Implementations.Services;
 
 public class AnalysisService(ILogger<AnalysisService> logger,
     IGuildMessagesRepository messagesRepository,

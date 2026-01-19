@@ -1,6 +1,6 @@
-﻿using MlkAdmin.Shared.JsonProviders;
+﻿using Amnyam.Shared.JsonProviders;
 
-namespace MlkAdmin._3_Infrastructure.Providers.Interfaces.Configuration.Messages;
+namespace Amnyam._3_Infrastructure.Providers.Interfaces.Configuration.Messages;
 
 public interface IWelcomeMessageProvider : IJsonMessageContentProvider<string>;
 public interface IRulesMessageProvider : IJsonMessageContentProvider<string>;
