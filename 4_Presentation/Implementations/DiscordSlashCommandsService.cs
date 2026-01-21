@@ -19,7 +19,7 @@ public class DiscordSlashCommandsService(
         {
             await discordService.DiscordClient.Rest.BulkOverwriteGuildCommands([], providersHub.GuildConfigProvidersHub.GuildConfig.GuildDetails.DiscordId);
 
-            SlashGuildCommands.Add(AddLobbyNameCommand());
+            SlashGuildCommands.Add(AddVoiceRoomSettingsCommand());
             SlashGuildCommands.Add(AddAnalysisCommand());
             SlashGuildCommands.Add(AddTestCommand());
 
@@ -36,12 +36,27 @@ public class DiscordSlashCommandsService(
         }
     }
 
-    private static SlashCommandProperties AddLobbyNameCommand()
+    private static SlashCommandProperties AddVoiceRoomSettingsCommand()
     {
         return new SlashCommandBuilder()
             .WithName(MlkAdminConstants.SET_VOICEROOM_COMMAND_NAME)
-            .WithDescription("Настраивает имя для создаваемой вами личной комнаты.")
-            .AddOption("name", ApplicationCommandOptionType.String, "Имя комнаты", isRequired: true)
+            .WithDescription("Задает настройки создаваемой голосовой комнаты")
+            .AddOption("voice_name", ApplicationCommandOptionType.String, "Имя комнаты", isRequired: false)
+            .AddOption("members_limit", ApplicationCommandOptionType.Integer, "Ограничения по участникам", isRequired: false)
+            .AddOption("region", ApplicationCommandOptionType.String, "Регион подключения", choices: [
+                new ApplicationCommandOptionChoiceProperties{ Name = "Brazil", Value = "brazil" },
+                new ApplicationCommandOptionChoiceProperties{ Name = "Hong Kong", Value = "hongkong" },
+                new ApplicationCommandOptionChoiceProperties{ Name = "India", Value = "india" },
+                new ApplicationCommandOptionChoiceProperties{ Name = "Japan", Value = "japan" },
+                new ApplicationCommandOptionChoiceProperties{ Name = "Rotterdam", Value = "rotterdam" },
+                new ApplicationCommandOptionChoiceProperties{ Name = "Singapore", Value = "singapore" },
+                new ApplicationCommandOptionChoiceProperties{ Name = "South Africa", Value = "southafrica" },
+                new ApplicationCommandOptionChoiceProperties{ Name = "Sydney", Value = "sydney" },
+                new ApplicationCommandOptionChoiceProperties{ Name = "US Central", Value = "us-central" },
+                new ApplicationCommandOptionChoiceProperties{ Name = "US East", Value = "us-east" },
+                new ApplicationCommandOptionChoiceProperties{ Name = "US South", Value = "us-south" },
+                new ApplicationCommandOptionChoiceProperties{ Name = "US West", Value = "us-west" }
+                ])
             .Build();
     }
 
