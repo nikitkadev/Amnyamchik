@@ -11,20 +11,29 @@ namespace Amnyam._2_Application.Commands.SetupGuildVoiceRoom;
 
 public class SetupGuildVoiceRoomCommandHandler(
     ILogger<SetupGuildVoiceRoomCommandHandler> logger,
-    IGuildMembersRepository membersRepository) : IRequestHandler<SetupGuildVoiceRoomCommand, BaseResult>
+    IRoomSettingsRepository settingsRepository) : IRequestHandler<SetupGuildVoiceRoomCommand, BaseResult>
 {
     public async Task<BaseResult> Handle(SetupGuildVoiceRoomCommand request, CancellationToken token)
     {
         try
         {
-            await membersRepository.UpdateVoiceRoomNameAsync(request.GuildMemberDiscordId, request.GuildVoiceRoomName, token);
+            await settingsRepository.UpsertRoomSettingsAsync(
+                new _1_Domain.Entities.RoomSettings()
+                {
+                    GuildMemberDiscordId = request.GuildMemberDiscordId,
+                    VoiceRoomName = request.RoomName,
+                    MembersLimit = request.MembersLimit,
+                    Region = request.Region,
+                    IsNSFW = request.IsNSFW,
+                    SlowModeLimit = request.SlowModeLimit
+                }, token);
 
             logger.LogInformation(
-                "Имя голосовой комнаты успешно изменено для участника {GuildMemberDiscordId}",
+                "Настройки успешно заданы для участника с DiscordId {GuildMemberDiscordId}",
                 request.GuildMemberDiscordId);
 
             return BaseResult.Success(
-                $"Вы успешно поменяли имя личной комнаты на {request.GuildVoiceRoomName}!");
+                $"Успешная настройка для личной комнаты!");
         }
         catch (DbUpdateException ex)
         {

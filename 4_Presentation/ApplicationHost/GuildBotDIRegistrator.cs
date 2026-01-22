@@ -57,6 +57,7 @@ public static class GuildBotDIRegistrator
         services.AddScoped<IGuildMembersRepository, GuildMembersRepository>();
         services.AddScoped<IGuildMessagesRepository, GuildMessagesRepository>();
         services.AddScoped<IGuildVoiceSessionRepository, GuildVoiceSessionRepository>();
+        services.AddScoped<IRoomSettingsRepository, RoomSettingsRepository>();
 
         return services;
     }

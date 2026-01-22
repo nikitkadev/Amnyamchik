@@ -7,7 +7,6 @@ public class GuildMember
     public string DisplayName { get; set; } = string.Empty;
     public bool IsAuthorized { get; set; } = false;
     public DateTimeOffset JoinedAt { get; set; } = DateTimeOffset.Now;
-    public string? VoiceRoomName { get; set; }
     public string? RealName {  get; set; }
     public string? TgName { get; set; }
     public DateTimeOffset? Birthday { get; set; } 

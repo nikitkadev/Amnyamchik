@@ -3,6 +3,7 @@ using System;
 using Amnyam._3_Infrastructure.DataBase.EF;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Amnyam.Migrations
 {
     [DbContext(typeof(MlkAdminDbContext))]
-    partial class MlkAdminDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260122140714_AddRoomSettingsTable")]
+    partial class AddRoomSettingsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -249,6 +252,10 @@ namespace Amnyam.Migrations
                     b.Property<decimal>("GuildMemberDiscordId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("numeric(20,0)");
+
+                    b.Property<int?>("Bitrate")
+                        .HasColumnType("integer")
+                        .HasColumnName("bitrate");
 
                     b.Property<bool?>("IsNSFW")
                         .HasColumnType("boolean")

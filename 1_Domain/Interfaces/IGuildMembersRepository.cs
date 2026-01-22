@@ -8,8 +8,6 @@ public interface IGuildMembersRepository
     Task <GuildMember> GetGuildMemberEntityAsync(ulong guildMemberDiscordId, CancellationToken token = default);
     Task RemoveGuildMemberEntityFromDbAsync(ulong guildMemberDiscordId, CancellationToken token = default);
     Task SyncGuildMembersWithDbAsync(CancellationToken token = default);
-    Task <string> GetVoiceRoomNameAsync(ulong guildMemberDiscordId, CancellationToken token = default);
-    Task UpdateVoiceRoomNameAsync(ulong guildMemberDiscordId, string voiceRoomName, CancellationToken token = default);
     Task<bool> IsAuthorizedAsync(ulong guildMemberDiscordId, CancellationToken token = default);
     Task<long> GetTotalSecondsInVoiceChannelsByMemberDiscordIdAsync(ulong guildMemberDiscordId);
 }

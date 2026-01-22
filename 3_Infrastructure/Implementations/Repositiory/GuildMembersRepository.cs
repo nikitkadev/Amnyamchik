@@ -113,26 +113,6 @@ public class GuildMembersRepository(
         await transaction.CommitAsync(token);
     }
 
-    public async Task UpdateVoiceRoomNameAsync(ulong guildMemberDiscordId, string voiceRoomName, CancellationToken token = default)
-    {
-        var dbMember = await mlkAdminDbContext.GuildMembers
-            .FirstOrDefaultAsync(
-                guildMember => guildMember.DiscordId == guildMemberDiscordId, token) ?? throw new GuildMemberNotFoundException(guildMemberDiscordId);
-
-        dbMember.VoiceRoomName = voiceRoomName;
-
-        await mlkAdminDbContext.SaveChangesAsync(token);
-    }
-
-    public async Task<string> GetVoiceRoomNameAsync(ulong guildMemberDiscordId, CancellationToken token = default)
-    {
-        var dbMember = await mlkAdminDbContext.GuildMembers
-            .FirstOrDefaultAsync(
-                guildMember => guildMember.DiscordId == guildMemberDiscordId, token) ?? throw new GuildMemberNotFoundException(guildMemberDiscordId);
-
-        return dbMember.VoiceRoomName ?? MlkAdminConstants.DEFAULT_VOICEROOM_NAME;
-    }
-
     public async Task<bool> IsAuthorizedAsync(ulong guildMemberDiscordId, CancellationToken token = default)
     {
         var dbMember = await mlkAdminDbContext.GuildMembers

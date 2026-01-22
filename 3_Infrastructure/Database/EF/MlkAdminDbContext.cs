@@ -11,6 +11,7 @@ public class MlkAdminDbContext(DbContextOptions<MlkAdminDbContext> options) : Db
     public DbSet<GuildMessage> GuildMessages { get; set; }
     public DbSet<GuildVoiceSession> GuildVoiceSessions { get; set; }
     public DbSet<GuildMemberMetric> GuildMemberMetrics { get; set; }
+    public DbSet<RoomSettings> RoomSettings { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -20,6 +21,7 @@ public class MlkAdminDbContext(DbContextOptions<MlkAdminDbContext> options) : Db
         GuildVoiceChannelModelCreating(modelBuilder);
         GuildVoiceSessionModelCreating(modelBuilder);
         GuildMemberMetricsModelCreating(modelBuilder);
+        RoomSettingsModelCreating(modelBuilder);
     }
 
     private static void GuildMemberModelCreating(ModelBuilder builder)
@@ -47,11 +49,6 @@ public class MlkAdminDbContext(DbContextOptions<MlkAdminDbContext> options) : Db
             .Property(prop => prop.JoinedAt)
             .HasColumnName("joined_at")
             .IsRequired();
-
-        builder.Entity<GuildMember>()
-            .Property(prop => prop.VoiceRoomName)
-            .HasColumnName("voice_room_name")
-            .IsRequired(false);
 
         builder.Entity<GuildMember>()
             .Property(prop => prop.RealName)
@@ -233,6 +230,37 @@ public class MlkAdminDbContext(DbContextOptions<MlkAdminDbContext> options) : Db
         builder.Entity<GuildMemberMetric>()
             .Property(prop => prop.LastMessage)
             .HasColumnName("last_message_date")
+            .IsRequired(false);
+    }
+    private static void RoomSettingsModelCreating(ModelBuilder builder)
+    {
+        builder.Entity<RoomSettings>()
+            .ToTable("room_settings")
+            .HasKey(settings => settings.GuildMemberDiscordId);
+
+        builder.Entity<RoomSettings>()
+            .Property(prop => prop.VoiceRoomName)
+            .HasColumnName("voiceroom_name")
+            .IsRequired(false);
+
+        builder.Entity<RoomSettings>()
+            .Property(prop => prop.MembersLimit)
+            .HasColumnName("members_limit")
+            .IsRequired(false);
+
+        builder.Entity<RoomSettings>()
+            .Property(prop => prop.Region)
+            .HasColumnName("region")
+            .IsRequired(false);
+
+        builder.Entity<RoomSettings>()
+            .Property(prop => prop.IsNSFW)
+            .HasColumnName("is_nsfw")
+            .IsRequired(false);
+
+        builder.Entity<RoomSettings>()
+            .Property(prop => prop.SlowModeLimit)
+            .HasColumnName("slowmode_limit")
             .IsRequired(false);
     }
 }
