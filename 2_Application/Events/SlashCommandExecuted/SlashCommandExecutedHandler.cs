@@ -72,16 +72,20 @@ public class SlashCommandExecutedHandler(
 
                 try
                 {
-                    var member = command.Data.Options.FirstOrDefault(option => option.Name == "member").Value as SocketUser;
+                    await messagesManager.SendDefaultResponseAsync(
+                        command,
+                        "Функционал временно недоступен!");
 
-                    var analysisResult = await mediator.Send(
-                        new AnalyzeGuildMemberCommand()
-                        {
-                            GuildMemberDiscordId = member.Id
-                        },
-                        token);
+                    //var member = command.Data.Options.FirstOrDefault(option => option.Name == "member").Value as SocketUser;
 
-                    await messagesManager.SendAnalyzeResultMessageAsync(command, analysisResult.Value);
+                    //var analysisResult = await mediator.Send(
+                    //    new AnalyzeGuildMemberCommand()
+                    //    {
+                    //        GuildMemberDiscordId = member.Id
+                    //    },
+                    //    token);
+
+                    //await messagesManager.SendAnalyzeResultMessageAsync(command, analysisResult.Value);
 
                     break;
                 }
