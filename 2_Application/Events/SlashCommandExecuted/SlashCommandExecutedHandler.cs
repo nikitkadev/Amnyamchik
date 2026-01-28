@@ -1,12 +1,14 @@
-﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+﻿using Amnyam._2_Application.Commands.RemoveVoiceRoomSettingsCommand;
 using Amnyam._2_Application.Commands.SetupGuildVoiceRoom;
 using Amnyam._2_Application.Commands.Test;
 using Amnyam._2_Application.Interfaces.Managers;
 using Amnyam.Shared.Constants;
-using Amnyam.Shared.JsonProviders;
 using Amnyam.Shared.Extensions;
+using Amnyam.Shared.JsonProviders;
+using Discord.Net;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 namespace Amnyam._2_Application.Events.SlashCommandExecuted;
 
@@ -18,9 +20,16 @@ public class SlashCommandExecutedHandler(
 {
     public async Task Handle(SlashCommandExecuted notification, CancellationToken token)
     {
-        await notification.SocketSlashCommand.DeferAsync(ephemeral: true);
-
         var command = notification.SocketSlashCommand;
+
+        try
+        {
+            await command.DeferAsync(ephemeral: true);
+        }
+        catch (HttpException ex) when (ex.DiscordCode == Discord.DiscordErrorCode.InteractionHasAlreadyBeenAcknowledged)
+        {
+            logger.LogError("Опять эта срань");
+        }
 
         if (command.Channel.Id != providersHub.GuildConfigProvidersHub.Channels.TextChannels.BotCommandsText.DiscordId)
         {
@@ -37,6 +46,7 @@ public class SlashCommandExecutedHandler(
 
                 try
                 {
+
                     var options = command.Data.Options;
 
                     var updateVoiceRoomNameResult = await mediator.Send(
@@ -68,6 +78,7 @@ public class SlashCommandExecutedHandler(
 
                 try
                 {
+
                     await messagesManager.SendDefaultResponseAsync(
                         command,
                         "Функционал временно недоступен!");
@@ -104,12 +115,12 @@ public class SlashCommandExecutedHandler(
                     break;
                 }
 
-
             case MlkAdminConstants.TESTING_COMMAND_NAME:
 
                 try
                 {
-                    if(command.User.Id != providersHub.GuildConfigProvidersHub.GuildConfig.Founder.DiscordId)
+
+                    if (command.User.Id != providersHub.GuildConfigProvidersHub.GuildConfig.Founder.DiscordId)
                     {
                         await messagesManager.SendDefaultResponseAsync(
                             command,
@@ -137,6 +148,31 @@ public class SlashCommandExecutedHandler(
                         "Ошибка при попытке обработать команду {CommandName} настройки личной голосовой комнаты",
                         MlkAdminConstants.TESTING_COMMAND_NAME);
 
+                    break;
+                }
+            
+            case MlkAdminConstants.REMOVE_VOICEROOM_COMMAND_NAME:
+                try
+                {
+
+                    var removingResult = await mediator.Send(
+                        new RemoveVoiceRoomSettingsCommand()
+                        {
+                            GuildMemberDiscordId = command.User.Id,
+                        }, token);
+
+                    await messagesManager.SendDefaultResponseAsync(
+                        command,
+                        removingResult.ClientMessage);
+
+                    break;
+                }
+                catch (Exception ex)
+                {
+                    logger.LogError(
+                        ex,
+                        "Ошибка при попытке обработать команду {CommandName} настройки личной голосовой комнаты",
+                        MlkAdminConstants.REMOVE_VOICEROOM_COMMAND_NAME);
                     break;
                 }
 

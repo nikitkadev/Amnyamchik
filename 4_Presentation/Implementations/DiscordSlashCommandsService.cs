@@ -57,15 +57,8 @@ public class DiscordSlashCommandsService(
                 new ApplicationCommandOptionChoiceProperties{ Name = "US East", Value = "us-east" },
                 new ApplicationCommandOptionChoiceProperties{ Name = "US South", Value = "us-south" },
                 new ApplicationCommandOptionChoiceProperties{ Name = "US West", Value = "us-west" }
-                ])
-            .AddOption("is_nsfw", ApplicationCommandOptionType.Boolean, "Комната с возрастным ограничением?", isRequired: false)
-            .AddOption("slowmode", ApplicationCommandOptionType.Integer, "Режим медленного набора сообщений (в секундах)", isRequired: false, choices: [
-                new ApplicationCommandOptionChoiceProperties{ Name = "Выключен", Value = 0 },
-                new ApplicationCommandOptionChoiceProperties{ Name = "5 секунд", Value = 5 },
-                new ApplicationCommandOptionChoiceProperties{ Name = "10 секунд", Value = 10 },
-                new ApplicationCommandOptionChoiceProperties{ Name = "15 секунд", Value = 15 },
-                new ApplicationCommandOptionChoiceProperties{ Name = "30 секунд", Value = 30 }
-                ])
+                ]
+            )
             .Build();
     }
     private static SlashCommandProperties AddRemovingVoiceRoomSrttingsCommand()
