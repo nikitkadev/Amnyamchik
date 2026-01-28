@@ -22,6 +22,7 @@ public class DiscordSlashCommandsService(
             SlashGuildCommands.Add(AddVoiceRoomSettingsCommand());
             SlashGuildCommands.Add(AddAnalysisCommand());
             SlashGuildCommands.Add(AddTestCommand());
+            SlashGuildCommands.Add(AddRemovingVoiceRoomSrttingsCommand());
 
             foreach (SlashCommandProperties? command in SlashGuildCommands)
                 await discordService.DiscordClient.Rest.CreateGuildCommand(command, providersHub.GuildConfigProvidersHub.GuildConfig.GuildDetails.DiscordId);
@@ -67,7 +68,13 @@ public class DiscordSlashCommandsService(
                 ])
             .Build();
     }
-
+    private static SlashCommandProperties AddRemovingVoiceRoomSrttingsCommand()
+    {
+        return new SlashCommandBuilder()
+            .WithName(MlkAdminConstants.REMOVE_VOICEROOM_COMMAND_NAME)
+            .WithDescription("Удаляет настройки создаваемой голосовой комнаты")
+            .Build();
+    }
     private static SlashCommandProperties? AddAnalysisCommand()
     {
         return new SlashCommandBuilder()
