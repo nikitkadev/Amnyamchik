@@ -40,12 +40,7 @@ public class RoomSettingsRepository(MlkAdminDbContext dbContext) : IRoomSettings
     public async Task RemoveRoomSettingsByGuildMemberDiscordIdAsync(ulong guildMemberDiscordId, CancellationToken token = default)
     {
         var settings = await dbContext.RoomSettings
-            .FirstOrDefaultAsync(rs => rs.GuildMemberDiscordId == guildMemberDiscordId, cancellationToken: token);
-
-        if (settings is null)
-        {
-            throw new ArgumentNullException($"Настроек комнаты для участника с DiscordId {guildMemberDiscordId} не найдены");
-        }
+            .FirstOrDefaultAsync(rs => rs.GuildMemberDiscordId == guildMemberDiscordId, cancellationToken: token) ?? throw new ArgumentNullException($"Настроек комнаты для участника с DiscordId {guildMemberDiscordId} не найдены");
 
         dbContext.RoomSettings.Remove(settings);
 

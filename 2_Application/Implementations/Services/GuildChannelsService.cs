@@ -45,7 +45,10 @@ public class GuildChannelsService(
             {
                 properties.CategoryId = providersHub.GuildConfigProvidersHub.Categories.Lobby.DiscordId;
                 properties.UserLimit = leaderVoiceRoonSettings.MembersLimit ?? 0;
-                properties.RTCRegion = leaderVoiceRoonSettings.Region ?? string.Empty;
+                if (!string.IsNullOrWhiteSpace(leaderVoiceRoonSettings.Region))
+                {
+                    properties.RTCRegion = leaderVoiceRoonSettings.Region;
+                }
                 properties.PermissionOverwrites = new Overwrite[]
                 {
                     new(
